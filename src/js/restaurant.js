@@ -7,7 +7,7 @@ import star from '../Assets/star.png';
 import kfc from '../Assets/KFC.png';
 import {Orders} from "./orders";
 import {Home} from "./home";
-import {SignIn} from "./signIn";
+import {Footer, Menu, SignIn} from "./signIn";
  export class Restaurant extends React.Component{
      constructor(props) {
          super(props);
@@ -24,27 +24,7 @@ import {SignIn} from "./signIn";
      render() {
          return (
              <div className="whole">
-                 <nav className="navbar fix-navbar white-back black-font fixed-top navbar-expand-sm navbar-light bg-white" lang="fa">
-                     <div className="container-fluid navbar-content" lang="fa">
-                         <ul className="nav navbar-nav navbar-right" lang="fa">
-                             <li className="list-item" lang="fa">
-                                 <button type="submit" className="without-style" >
-                                     <img className="img-responsive logo" src={logo} alt="Loghmeh Logo" onClick={this.goToHome}/>
-                                 </button>
-                             </li>
-                         </ul>
-                         <ul className="nav navbar-nav" lang="fa">
-                             <li className="list-item " dir="rtl"><button className="exit without-style" onClick={this.logOut} lang="fa">خروج</button>
-                             </li>
-                             <li className="list-item" dir="rtl" lang="fa">
-                                 <a href="#" lang="fa">
-                                     <i className="flaticon-smart-cart " lang="fa"/>
-                                     <span className="dot" lang="fa">۳</span>
-                                 </a>
-                             </li>
-                         </ul>
-                     </div>
-                 </nav>
+                 <Menu location="restaurant"/>
                  <div className="container-fluid top pink-back" dir="rtl" lang="fa">
                      <ul className="nav top restaurant-logo-top" lang="fa">
                          <li className="list-item"><img className="img-responsive restaurant-logo"
@@ -216,10 +196,7 @@ import {SignIn} from "./signIn";
                      </div>
                  </div>
 
-                 <footer className="footer" dir="rtl" lang="fa">
-                     <p lang="fa">&copy; تمامی حقوق متعلق به لقمه است.</p>
-                 </footer>
-
+                 <Footer/>
              </div>
          );
      }
