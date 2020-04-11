@@ -38,7 +38,7 @@ export class Home extends React.Component{
                                                 < input type = "text" className = "form-control search-place gray-back" placeholder = "نام رستوران" size = "30" dir = "rtl" lang = "fa" />
                                         </span>
                                         <span className="form-btn" dir="rtl" lang="fa">
-                                            <button type="submit" className="btn done submit-btn search-place black-font" dir="rtl" lang="fa">جست و جو</button>
+                                            <button type="submit" className="btn search-btn submit-btn search-place black-font" dir="rtl" lang="fa">جست و جو</button>
                                         </span>
                                     </form>
                                 </div>
@@ -102,8 +102,8 @@ export class Home extends React.Component{
                                     <br/>
                                         <span dir="rtl" className="price pre"  lang="fa">۴۴۰۰۰ </span><br/>
                                         <span dir="rtl" className="price black-font post"  lang="fa">۳۹۰۰۰ </span><br/>
-                                        <button type="button" className="btn done exist without-shadow black-font" dir="rtl" lang="fa" disabled>ناموجود</button>
-                                        <button type="button" className="btn done buy without-shadow white-font" dir="rtl" lang="fa"  disabled> خرید</button>
+                                        <button type="button" className="btn done exist not without-shadow black-font" dir="rtl" lang="fa" disabled>ناموجود</button>
+                                        <button type="button" className="btn done finished buy without-shadow white-font" dir="rtl" lang="fa"  disabled> خرید</button>
                                         <hr className="line"/>
                                             <p className="res-name" lang="fa">رستوران خامس</p>
                         </div>

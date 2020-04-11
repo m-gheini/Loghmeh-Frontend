@@ -45,7 +45,7 @@ export class SignIn extends React.Component{
                         </form >
                         <div className="no-account" dir="rtl" lang="fa">
                             کاربر جدید هستید؟
-                            <button type="submit"  className="new-user" onSubmit={this.goToSignUp}>ثبت نام کنید.</button>
+                            <button type="submit"  className="new-user" onClick={this.goToSignUp}>ثبت نام کنید.</button>
                         </div>
                     </div>
                 </div>
