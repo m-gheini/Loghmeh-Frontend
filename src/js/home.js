@@ -34,8 +34,8 @@ export class Home extends React.Component{
                                 < div className = "inner" lang = "fa" >
                                     < form className = "form-inline" dir = "rtl" lang = "fa" >
                                         < span className = "form-input" dir = "rtl" lang = "fa" >
-                                            < input type = "text" className = "form-control search-place gray-back" placeholder = "نام غذا" size = "30" dir = "rtl" lang = "fa" />
-                                                < input type = "text" className = "form-control search-place gray-back" placeholder = "نام رستوران" size = "30" dir = "rtl" lang = "fa" />
+                                            < input type = "text" className = "form-control search-place gray-back" placeholder = "نام غذا" size = "10" dir = "rtl" lang = "fa" />
+                                                < input type = "text" className = "form-control search-place gray-back" placeholder = "نام رستوران" size = "10" dir = "rtl" lang = "fa" />
                                         </span>
                                         <span className="form-btn" dir="rtl" lang="fa">
                                             <button type="submit" className="btn search-btn submit-btn search-place black-font" dir="rtl" lang="fa">جست و جو</button>

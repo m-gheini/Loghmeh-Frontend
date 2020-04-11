@@ -178,8 +178,8 @@ ul{
     padding: 4% 4% 1% 4%;
     text-align: center;
     vertical-align: middle;
-    width: 83%;
-    right: 8.5%;
+    width: 50%;
+    right: 25%;
     left: 8.5%;
     margin-bottom: 5%;
     height: 10%;
@@ -189,6 +189,8 @@ ul{
 @media (max-width: 768px) {
     .search{
         padding: 3% 4% 3% 4%;
+        width: 75%;
+        right: 12%;
     }
 }
 .inner{
