@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {SignIn} from './js/content';
 import '../src/css/index.css';
-// import 'bootstrap/dist/css/bootstrap.min.css';
 import * as serviceWorker from './serviceWorker';
 import './index.css';
 // import App from './App';
