@@ -4,9 +4,18 @@ import logo from '../Assets/LOGO.png';
 import pizza from '../Assets/pizza.png';
 import star from '../Assets/star.png';
 import kfc from '../Assets/KFC.png';
+import {SignIn} from "./signIn";
+import {Restaurant} from "./restaurant";
 export class Home extends React.Component{
     constructor(props) {
         super(props);
+        this.logOut = this.logOut.bind(this);
+    }
+    logOut(){
+        ReactDOM.render(<SignIn/>,document.getElementById("root"));
+    }
+    goToSpecificRestaurant(){
+        ReactDOM.render(<Restaurant/>,document.getElementById("root"));
 
     }
     render() {
@@ -15,7 +24,8 @@ export class Home extends React.Component{
                 <nav className="navbar fix-navbar  fixed-top white-back black-font navbar-expand-sm navbar-light bg-white" lang="fa">
                     <div className="container-fluid navbar-content" lang="fa">
                         <ul className="nav navbar-nav" lang="fa">
-                            <li className="list-item " dir="rtl"><a className="exit" lang="fa" href="signIn.html">خروج</a></li>
+                            <li className="list-item " dir="rtl"><button className="exit without-style" onClick={this.logOut} lang="fa">خروج</button>
+                            </li>
                             <li className="list-item " dir="rtl"><a className="account" href="#" lang="fa">حساب کاربری</a></li>
                             <li className="list-item" dir="rtl">
                                 <a href="#">
@@ -145,7 +155,7 @@ export class Home extends React.Component{
                                     <span className="restaurant-food-name black-font">Khames Fried Chicken</span>
                                 </span>
                             <br/>
-                            <button type="button" className="btn done black-font without-shadow" dir="rtl" lang="fa">نمایش منو</button>
+                            <button type="button" className="btn done black-font without-shadow" dir="rtl" lang="fa" onClick={this.goToSpecificRestaurant}>نمایش منو</button>
                         </div>
                         <div className="foods res white-back">
                             <img className="food-img party" src={kfc} alt="pizza"/>
@@ -154,7 +164,7 @@ export class Home extends React.Component{
                                 <span className="restaurant-food-name black-font">Khames Fried Chicken</span>
                             </span>
                             <br/>
-                            <button type="button" className="btn done black-font without-shadow" dir="rtl" lang="fa">نمایش منو</button>
+                            <button type="button" className="btn done black-font without-shadow" dir="rtl" lang="fa" onClick={this.goToSpecificRestaurant}>نمایش منو</button>
                         </div>
                         <div className="foods res white-back">
                             <img className="food-img party" src={kfc} alt="pizza"/>
@@ -163,7 +173,7 @@ export class Home extends React.Component{
                                     <span className="restaurant-food-name black-font">Khames Fried Chicken</span>
                                 </span>
                                 <br/>
-                                <button type="button" className="btn done black-font without-shadow" dir="rtl" lang="fa">نمایش منو</button>
+                                <button type="button" className="btn done black-font without-shadow" dir="rtl" lang="fa" onClick={this.goToSpecificRestaurant}>نمایش منو</button>
                         </div>
                         <div className="foods res white-back">
                             <img className="food-img party" src={kfc} alt="pizza"/>
@@ -172,7 +182,7 @@ export class Home extends React.Component{
                                 <span className="restaurant-food-name black-font">Khames Fried Chicken</span>
                             </span>
                             <br/>
-                            <button type="button" className="btn done black-font without-shadow" dir="rtl" lang="fa">نمایش منو</button>
+                            <button type="button" className="btn done black-font without-shadow" dir="rtl" lang="fa" onClick={this.goToSpecificRestaurant}>نمایش منو</button>
                         </div>
                         <div className="foods res white-back">
                             <img className="food-img party" src={kfc} alt="pizza"/>
@@ -181,7 +191,7 @@ export class Home extends React.Component{
                                 <span className="restaurant-food-name black-font">Khames Fried Chicken</span>
                             </span>
                             <br/>
-                            <button type="button" className="btn done black-font without-shadow" dir="rtl" lang="fa">نمایش منو</button>
+                            <button type="button" className="btn done black-font without-shadow" dir="rtl" lang="fa" onClick={this.goToSpecificRestaurant}>نمایش منو</button>
                         </div>
                         <div className="foods res white-back">
                             <img className="food-img party" src={kfc} alt="pizza"/>
@@ -190,7 +200,7 @@ export class Home extends React.Component{
                                 <span className="restaurant-food-name black-font">Khames Fried Chicken</span>
                             </span>
                             <br/>
-                            <button type="button" className="btn done black-font without-shadow" dir="rtl" lang="fa">نمایش منو</button>
+                            <button type="button" className="btn done black-font without-shadow" dir="rtl" lang="fa" onClick={this.goToSpecificRestaurant}>نمایش منو</button>
                         </div>
                         <div className="foods res white-back">
                             <img className="food-img party" src={kfc} alt="pizza"/>
@@ -199,7 +209,7 @@ export class Home extends React.Component{
                                 <span className="restaurant-food-name black-font">Khames Fried Chicken</span>
                             </span>
                             <br/>
-                            <button type="button" className="btn done black-font without-shadow" dir="rtl" lang="fa">نمایش منو</button>
+                            <button type="button" className="btn done black-font without-shadow" dir="rtl" lang="fa" onClick={this.goToSpecificRestaurant}>نمایش منو</button>
                         </div>
                         <div className="foods res white-back">
                             <img className="food-img party" src={kfc} alt="pizza"/>
@@ -208,7 +218,7 @@ export class Home extends React.Component{
                                 <span className="restaurant-food-name black-font">Khames Fried Chicken</span>
                             </span>
                             <br/>
-                            <button type="button" className="btn done black-font without-shadow" dir="rtl" lang="fa">نمایش منو</button>
+                            <button type="button" className="btn done black-font without-shadow" dir="rtl" lang="fa" onClick={this.goToSpecificRestaurant}>نمایش منو</button>
                         </div>
                     </div>
                 </div>
