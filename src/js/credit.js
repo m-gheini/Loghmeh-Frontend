@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import logo from '../Assets/LOGO.png';
 import {Orders} from "./orders";
 import {Home} from "./home";
-import {SignIn} from "./signIn";
+import {Footer, Menu, SignIn} from "./signIn";
 
 export class Credit extends React.Component{
     constructor(props) {
@@ -29,27 +29,7 @@ export class Credit extends React.Component{
     render() {
         return (
             <div className="whole">
-                <nav className="navbar fix-navbar white-back black-font fixed-top navbar-expand-sm navbar-light bg-white" lang="fa">
-                    <div className="container-fluid navbar-content" lang="fa">
-                        <ul className="nav navbar-nav navbar-right" lang="fa">
-                            <li className="list-item" lang="fa">
-                                <button type="submit" className="without-style" >
-                                    <img className="img-responsive logo" src={logo} alt="Loghmeh Logo" onClick={this.goToHome}/>
-                                </button>
-                            </li>
-                        </ul>
-                        <ul className="nav navbar-nav" lang="fa">
-                            <li className="list-item " dir="rtl"><button className="exit without-style" onClick={this.logOut} lang="fa">خروج</button>
-                            </li>
-                            <li className="list-item" dir="rtl" lang="fa">
-                                <a href="#" lang="fa">
-                                    <i className="flaticon-smart-cart " lang="fa"/>
-                                    <span className="dot" lang="fa">۳</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
+                <Menu location="userInfo"/>
                 <div className="container-fluid user-info pink-back" dir="rtl" lang="fa">
                     <div className="col-sm-6 important" dir="rtl" lang="fa"><span className="flaticon-account " lang="fa"/>احسان
                         خامس پناه
@@ -91,11 +71,7 @@ export class Credit extends React.Component{
                         </div>
                     </div>
                 </div>
-
-
-                <footer className="footer" dir="rtl" lang="fa">
-                    <p lang="fa">&copy; تمامی حقوق متعلق به لقمه است.</p>
-                </footer>
+                <Footer/>
             </div>
         );
     }
