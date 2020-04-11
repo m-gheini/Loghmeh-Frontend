@@ -789,10 +789,14 @@ input, .submit-btn{
     color: #007bff;
     font-weight: normal;
     font-size: medium;
+    background-color: white !important;
+    border: none !important;
 }
 .new-user:hover{
     color: #007bff;
     font-weight: normal;
     font-size: medium;
     text-decoration: underline;
+    background-color: white !important;
+    border: none !important;
 }

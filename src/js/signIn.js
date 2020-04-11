@@ -161,8 +161,4 @@ export class SignIn extends React.Component{
             </div>
         );
     }
-
-    // goToSignUp() {
-    //     ReactDOM.render(<SignUp />,document.getElementById("root"))
-    // }
 }
