@@ -120,7 +120,7 @@ export class SignIn extends React.Component{
     }
     render() {
         return (
-            <div class="whole">
+            <div className="whole">
                 <nav
                     className="navbar fix-navbar white-back black-font  fixed-top navbar-expand-sm navbar-light bg-white">
                     <div className="container-fluid navbar-content">
