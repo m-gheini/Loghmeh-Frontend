@@ -780,11 +780,11 @@ input, .submit-btn{
     text-align: center;
     margin-top: 10%;
 }
-@media (max-width: 768px) {
-    .no-account{
-        margin-top: 40%;
-    }
-}
+/*@media (max-width: 768px) {*/
+/*    .no-account{*/
+/*        margin-top: 40%;*/
+/*    }*/
+/*}*/
 .new-user{
     color: #007bff;
     font-weight: normal;

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {SignIn} from './js/content';
+import {SignIn} from './js/signIn';
 import '../src/css/index.css';
 import * as serviceWorker from './serviceWorker';
 import './index.css';
