@@ -18,13 +18,13 @@ export class SignIn extends React.Component{
     }
     render() {
         return (
-            <div className="whole">
+            <div className='whole'>
                 <nav
                     className="navbar fix-navbar white-back black-font  fixed-top navbar-expand-sm navbar-light bg-white">
                     <div className="container-fluid navbar-content">
                         <ul className="nav navbar-nav navbar-right">
                             <li className="list-item">
-                                <a href="#" className="logo-link"><img className="img-responsive logo" src={logo} alt="Loghmeh Logo"/></a></li>
+                                <a href="home.html" className="logo-link"><img className="img-responsive logo" src={logo} alt="Loghmeh Logo"/></a></li>
                         </ul>
                     </div>
                 </nav>
@@ -45,7 +45,7 @@ export class SignIn extends React.Component{
                         </form >
                         <div className="no-account" dir="rtl" lang="fa">
                             کاربر جدید هستید؟
-                            <button type="submit"  className="new-user" onClick={this.goToSignUp}>ثبت نام کنید.</button>
+                            <button type="submit"  className="new-user" onSubmit={this.goToSignUp}>ثبت نام کنید.</button>
                         </div>
                     </div>
                 </div>

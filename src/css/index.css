@@ -6,6 +6,12 @@
 #root{
     height: 100%;
 }
+#header{
+   height: 0%;
+}
+#footer{
+    height: 0%;
+}
 .whole{
     height: 100%;
 }
