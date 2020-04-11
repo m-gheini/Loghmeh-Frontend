@@ -3,6 +3,9 @@
     color: #f7fff7;
     font-weight: lighter;
 }
+#root{
+    height: 100%;
+}
 .whole{
     height: 100%;
 }

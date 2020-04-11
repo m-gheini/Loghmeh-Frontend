@@ -126,7 +126,7 @@ export class SignIn extends React.Component{
                     <div className="container-fluid navbar-content">
                         <ul className="nav navbar-nav navbar-right">
                             <li className="list-item">
-                                <a href="home.html" className="logo-link"><img className="img-responsive logo" src={logo} alt="Loghmeh Logo"></img></a></li>
+                                <a href="home.html" className="logo-link"><img className="img-responsive logo" src={logo} alt="Loghmeh Logo"/></a></li>
                         </ul>
                     </div>
                 </nav>
@@ -136,12 +136,12 @@ export class SignIn extends React.Component{
                             <form className="col-sm-10 signup-form" action="credit.html" dir="rtl" lang="fa">
                                 <div className="form-group" dir="rtl" lang="fa">
                                     <label htmlFor="email" dir="rtl" className="label dark-green" lang="fa">پست الکترونیک:</label>
-                                    <input type="email" className="form-control gray-back" dir="rtl" id="email" placeholder="پست الکترونیک" required lang="fa"></input>
+                                    <input type="email" className="form-control gray-back" dir="rtl" id="email" placeholder="پست الکترونیک" required lang="fa"/>
                                 </div>
                                 <div className="form-group" dir="rtl" lang="fa">
                                     <label htmlFor="pwd" dir="rtl" className="label dark-green" lang="fa">رمز عبور:</label>
                                     <input type="password" className="form-control gray-back" id="pwd" dir="rtl"
-                                           placeholder="رمز عبور" required lang="fa"></input>
+    placeholder="رمز عبور" required lang="fa"/>
                                 </div>
                                 <button type="submit" className="col-sm-12 btn btn-default sub-btn dark-green" dir="rtl"
                                     lang="fa">ورود
