@@ -24,7 +24,7 @@ export class SignIn extends React.Component{
                     <div className="container-fluid navbar-content">
                         <ul className="nav navbar-nav navbar-right">
                             <li className="list-item">
-                                <a href="home.html" className="logo-link"><img className="img-responsive logo" src={logo} alt="Loghmeh Logo"/></a></li>
+                                <a  className="logo-link"><img className="img-responsive logo" src={logo} alt="Loghmeh Logo"/></a></li>
                         </ul>
                     </div>
                 </nav>

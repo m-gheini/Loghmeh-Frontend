@@ -2,18 +2,23 @@ import React from "react";
 import ReactDOM from 'react-dom';
 import logo from '../Assets/LOGO.png';
 import {Orders} from "./orders";
+import {Home} from "./home";
 
 export class Credit extends React.Component{
     constructor(props) {
         super(props);
         this.goToOrders = this.goToOrders.bind(this);
         this.goToCredit = this.goToCredit.bind(this);
+        this.goToHome = this.goToHome.bind(this);
     }
     goToOrders(){
         ReactDOM.render(<Orders />,document.getElementById("root"));
     }
     goToCredit(){
-        ReactDOM.render(<Credit />,document.getElementById("root"))
+        ReactDOM.render(<Credit />,document.getElementById("root"));
+    }
+    goToHome(){
+        ReactDOM.render(<Home />,document.getElementById("root"));
     }
     render() {
         return (
@@ -21,8 +26,8 @@ export class Credit extends React.Component{
                 <nav className="navbar fix-navbar white-back black-font fixed-top navbar-expand-sm navbar-light bg-white" lang="fa">
                     <div className="container-fluid navbar-content" lang="fa">
                         <ul className="nav navbar-nav navbar-right" lang="fa">
-                            <li className="list-item" lang="fa"><a href="home.html"><img className="img-responsive logo"
-                                                                                         src={logo} alt="Loghmeh Logo" /></a>
+                            <li className="list-item" lang="fa"><button type="submit" onSubmit={this.goToHome()}><img className="img-responsive logo"
+                                                                                         src={logo} alt="Loghmeh Logo" /></button>
                             </li>
                         </ul>
                         <ul className="nav navbar-nav" lang="fa">
