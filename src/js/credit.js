@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import logo from '../Assets/LOGO.png';
 import {Orders} from "./orders";
 import {Home} from "./home";
+import {SignIn} from "./signIn";
 
 export class Credit extends React.Component{
     constructor(props) {
@@ -10,6 +11,7 @@ export class Credit extends React.Component{
         this.goToOrders = this.goToOrders.bind(this);
         this.goToCredit = this.goToCredit.bind(this);
         this.goToHome = this.goToHome.bind(this);
+        this.logOut = this.logOut.bind(this);
     }
     goToOrders(){
         ReactDOM.render(<Orders />,document.getElementById("root"));
@@ -20,6 +22,10 @@ export class Credit extends React.Component{
     goToHome(){
         ReactDOM.render(<Home />,document.getElementById("root"));
     }
+    logOut(){
+        ReactDOM.render(<SignIn/>,document.getElementById("root"));
+    }
+
     render() {
         return (
             <div className="whole">
@@ -33,7 +39,8 @@ export class Credit extends React.Component{
                             </li>
                         </ul>
                         <ul className="nav navbar-nav" lang="fa">
-                            <li className="list-item " dir="rtl"><a className="exit" href="signIn.html" lang="fa">خروج</a></li>
+                            <li className="list-item " dir="rtl"><button className="exit without-style" onClick={this.logOut} lang="fa">خروج</button>
+                            </li>
                             <li className="list-item" dir="rtl" lang="fa">
                                 <a href="#" lang="fa">
                                     <i className="flaticon-smart-cart " lang="fa"/>
