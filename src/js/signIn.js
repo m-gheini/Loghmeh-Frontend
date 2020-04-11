@@ -31,7 +31,7 @@ export class SignIn extends React.Component{
                 <div className="container-fluid main-content " lang="fa">
                     <div className="col-sm-6 sighnup-div white-back" lang="fa">
                         <div className="form-div" dir="rtl" lang="fa">فرم ورود</div>
-                            <form className="col-sm-10 signup-form" action="POST" dir="rtl" lang="fa" >
+                            <form className="col-sm-10 signup-form" action="POST" dir="rtl" lang="fa" onSubmit={this.signIn}>
                                 <div className="form-group" dir="rtl" lang="fa">
                                     <label htmlFor="email" dir="rtl" className="label dark-green" lang="fa">پست الکترونیک:</label>
                                     <input type="email" className="form-control gray-back" dir="rtl" id="email" placeholder="پست الکترونیک" required lang="fa"/>
@@ -40,7 +40,7 @@ export class SignIn extends React.Component{
                                     <label htmlFor="pwd" dir="rtl" className="label dark-green" lang="fa">رمز عبور:</label>
                                     <input type="password" className="form-control gray-back" id="pwd" dir="rtl" placeholder="رمز عبور" required lang="fa"/>
                                 </div>
-                                <button type="submit" className="col-sm-12 btn btn-default sub-btn dark-green" dir="rtl" lang="fa" onClick={this.signIn}>ورود
+                                <button type="submit" className="col-sm-12 btn btn-default sub-btn dark-green" dir="rtl" lang="fa" >ورود
                                 </button>
                         </form >
                         <div className="no-account" dir="rtl" lang="fa">
