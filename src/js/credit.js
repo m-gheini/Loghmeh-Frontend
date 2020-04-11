@@ -26,8 +26,10 @@ export class Credit extends React.Component{
                 <nav className="navbar fix-navbar white-back black-font fixed-top navbar-expand-sm navbar-light bg-white" lang="fa">
                     <div className="container-fluid navbar-content" lang="fa">
                         <ul className="nav navbar-nav navbar-right" lang="fa">
-                            <li className="list-item" lang="fa"><button type="submit" onSubmit={this.goToHome()}><img className="img-responsive logo"
-                                                                                         src={logo} alt="Loghmeh Logo" /></button>
+                            <li className="list-item" lang="fa">
+                                <button type="submit" className="without-style" >
+                                    <img className="img-responsive logo" src={logo} alt="Loghmeh Logo" onClick={this.goToHome}/>
+                                </button>
                             </li>
                         </ul>
                         <ul className="nav navbar-nav" lang="fa">

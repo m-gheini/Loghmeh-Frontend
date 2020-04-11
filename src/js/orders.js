@@ -2,12 +2,14 @@ import React from "react";
 import ReactDOM from 'react-dom';
 import logo from '../Assets/LOGO.png';
 import {Credit} from "./credit";
+import {Home} from "./home";
 
 export class Orders extends React.Component{
     constructor(props) {
         super(props);
         this.goToOrders = this.goToOrders.bind(this);
         this.goToCredit = this.goToCredit.bind(this);
+        this.goToHome = this.goToHome.bind(this);
     }
     goToOrders(){
         ReactDOM.render(<Orders />,document.getElementById("root"));
@@ -15,14 +17,20 @@ export class Orders extends React.Component{
     goToCredit(){
         ReactDOM.render(<Credit />,document.getElementById("root"))
     }
+    goToHome(){
+        ReactDOM.render(<Home />,document.getElementById("root"));
+    }
+
     render() {
         return (
             <div className="whole">
                 <nav className="navbar fix-navbar  fixed-top white-back black-font navbar-expand-sm navbar-light bg-white" lang="fa">
                     <div className="container-fluid navbar-content" lang="fa">
                         <ul className="nav navbar-nav navbar-right" lang="fa">
-                            <li className="list-item"><a href="home.html" lang="fa"><img className="img-responsive logo"
-    src={logo} alt="Loghmeh Logo"/></a>
+                            <li className="list-item">
+                                <button type="submit" className="without-style" >
+                                    <img className="img-responsive logo" src={logo} alt="Loghmeh Logo" onClick={this.goToHome}/>
+                                </button>
                             </li>
                         </ul>
                         <ul className="nav navbar-nav" lang="fa">
