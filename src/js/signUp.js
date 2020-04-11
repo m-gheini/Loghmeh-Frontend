@@ -47,6 +47,7 @@ export class SignUp extends React.Component{
                                     lang="fa">ثبت نام
                             </button>
                         </form>
+
                     </div>
                 </div>
                 <footer className="footer" dir="rtl" lang="fa">

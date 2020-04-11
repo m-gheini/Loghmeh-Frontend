@@ -792,11 +792,12 @@ input, .submit-btn{
     background-color: white !important;
     border: none !important;
 }
-.new-user:hover{
+.new-user:hover,.new-user:active{
     color: #007bff;
     font-weight: normal;
     font-size: medium;
     text-decoration: underline;
     background-color: white !important;
     border: none !important;
+    text-decoration: none !important;
 }

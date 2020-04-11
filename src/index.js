@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {SignIn} from './js/signIn';
+import '../src/css/normalize.css'
 import '../src/css/index.css';
+import '../src/font/flaticon.css'
 import * as serviceWorker from './serviceWorker';
 import './index.css';
 // import App from './App';
