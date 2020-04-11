@@ -1,10 +1,16 @@
 import React from "react";
 import ReactDOM from 'react-dom';
 import logo from '../Assets/LOGO.png';
+import {SignIn} from "./signIn";
 
 export class SignUp extends React.Component{
     constructor(props) {
         super(props);
+        this.goToSignIn = this.goToSignIn.bind(this);
+
+    }
+    goToSignIn(){
+        ReactDOM.render(<SignIn />,document.getElementById("root"));
     }
     render(){
         return(
@@ -21,7 +27,7 @@ export class SignUp extends React.Component{
                 <div className="container-fluid main-content " lang="fa">
                     <div className="col-sm-6 sighnup-div white-back" lang="fa">
                         <div className="form-div" dir="rtl" lang="fa">فرم ثبت نام</div>
-                        <form className="col-sm-10 signup-form" action="credit.html" dir="rtl" lang="fa">
+                        <form className="col-sm-10 signup-form" action="credit.html" dir="rtl" lang="fa" onSubmit={this.goToSignIn}>
                             <div className="form-group" dir="rtl" lang="fa">
                                 <label dir="rtl" className="label dark-green" lang="fa">نام و نام خانوادگی:</label>
                                 <input type="text" className="form-control gray-back" dir="rtl"

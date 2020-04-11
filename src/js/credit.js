@@ -1,12 +1,19 @@
 import React from "react";
 import ReactDOM from 'react-dom';
 import logo from '../Assets/LOGO.png';
-import {SignUp} from "./signUp";
+import {Orders} from "./orders";
 
 export class Credit extends React.Component{
     constructor(props) {
         super(props);
-
+        this.goToOrders = this.goToOrders.bind(this);
+        this.goToCredit = this.goToCredit.bind(this);
+    }
+    goToOrders(){
+        ReactDOM.render(<Orders />,document.getElementById("root"));
+    }
+    goToCredit(){
+        ReactDOM.render(<Credit />,document.getElementById("root"))
     }
     render() {
         return (
@@ -52,9 +59,9 @@ export class Credit extends React.Component{
                     <div className="container-fluid col-sm-10 box white-back" lang="fa">
     <span className="container btn-group col-sm-8 choices white-back" dir="rtl" lang="fa">
         <button type="button" className="btn btn-primary orders pink-back white-font" dir="rtl"
-                onClick="parent.location='credit.html'" lang="fa">افزایش اعتبار</button>
+                onClick={this.goToCredit} lang="fa">افزایش اعتبار</button>
         <button type="button" className="btn btn-primary credit white-back black-font left-border" dir="rtl"
-                onClick="parent.location='orders.html'" lang="fa">سفارش ها</button>
+                onClick={this.goToOrders} lang="fa">سفارش ها</button>
     </span>
 
                         <div className="inner" lang="fa">
