@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from 'react-dom';
 import logo from '../Assets/LOGO.png';
+import {Loader} from "./loading";
 import {SignUp} from "./signUp";
 import {Credit} from "./credit";
 import {Home} from "./home";
@@ -40,6 +41,7 @@ export class SignIn extends React.Component{
                     </div>
                 </div>
                 <Footer/>
+                {/*<Loader/>*/}
             </div>
         );
     }
