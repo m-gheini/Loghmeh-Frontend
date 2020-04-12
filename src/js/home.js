@@ -25,16 +25,16 @@ export class Home extends React.Component{
         return (
             <div className="whole">
                 <Menu location="home"/>
-                < div className = "overlay" dir = "rtl" lang = "fa" >
-                    < ul className = "nav top restaurant-logo-top" lang = "fa" >
-                        < li className = "list-item" > < img className = "img-responsive homelogo" src = {logo} alt = "Loghmeh Logo" lang = "fa" /> </li>
+                <div className = "overlay" dir = "rtl" lang = "fa" >
+                    <ul className = "nav top restaurant-logo-top" lang = "fa" >
+                        <li className = "list-item" > <img className = "img-responsive homelogo" src = {logo} alt = "Loghmeh Logo" lang = "fa" /> </li>
                             <li className="current-restaurant-name white-font" lang="fa">اولین و بزرگ ترین وب سایت سفارش آنلاین غذا در دانشگاه تهران</li>
-                            < div className = "white-back search" lang = "fa" >
-                                < div className = "inner" lang = "fa" >
-                                    < form className = "form-inline" dir = "rtl" lang = "fa" >
-                                        < span className = "form-input" dir = "rtl" lang = "fa" >
-                                            < input type = "text" className = "form-control search-place gray-back" placeholder = "نام غذا" size = "10" dir = "rtl" lang = "fa" />
-                                                < input type = "text" className = "form-control search-place gray-back" placeholder = "نام رستوران" size = "10" dir = "rtl" lang = "fa" />
+                            <div className = "white-back search" lang = "fa" >
+                                <div className = "inner" lang = "fa" >
+                                    <form className = "form-inline" dir = "rtl" lang = "fa" >
+                                        <span className = "form-input" dir = "rtl" lang = "fa" >
+                                            <input type = "text" className = "form-control search-place gray-back" placeholder = "نام غذا" size = "10" dir = "rtl" lang = "fa" />
+                                                <input type = "text" className = "form-control search-place gray-back" placeholder = "نام رستوران" size = "10" dir = "rtl" lang = "fa" />
                                         </span>
                                         <span className="form-btn" dir="rtl" lang="fa">
                                             <button type="submit" className="btn search-btn submit-btn search-place black-font" dir="rtl" lang="fa">جست و جو</button>
@@ -54,161 +54,26 @@ export class Home extends React.Component{
                         </div>
                     </div>
                     <div className="party-info">
-                        <div className="food-party-info white-back">
-                            <img className="food-img party" src={pizza} alt="pizza"/>
-                                <br/>
-                                    <span className="restaurant-food-name name-party black-font" lang="fa"> پیتزا</span>
-                                    <span className="food-num rate black-font" dir="rtl" lang="fa">۵  <img  className="star-info" src={star} alt="star"/></span>
-                                    <br/>
-                                        <span dir="rtl" className="price pre"  lang="fa">۳۹۰۰۰ </span><br/>
-                                        <span dir="rtl" className="price black-font post"  lang="fa">۲۹۰۰۰ </span><br/>
-                                        <button type="button" className="btn done exist without-shadow black-font" dir="rtl" lang="fa" disabled>موجودی: ۳</button>
-                                        <button type="button" className="btn done buy without-shadow white-font" dir="rtl" lang="fa"> خرید</button>
-                                        <hr className="line"/>
-                                            <p className="res-name" lang="fa">رستوران خامس</p>
-                        </div>
-                        <div className="food-party-info white-back">
-                            <img className="food-img party" src={pizza} alt="pizza"/>
-                                <br/>
-                                    <span className="restaurant-food-name name-party black-font" lang="fa"> پیتزا</span>
-                                    <span className="food-num rate black-font" dir="rtl" lang="fa">۵  <img  className="star-info" src={star} alt="star"/></span>
-                                    <br/>
-                                        <span dir="rtl" className="price pre"  lang="fa">۳۹۰۰۰ </span><br/>
-                                        <span dir="rtl" className="price black-font post"  lang="fa">۲۹۰۰۰ </span><br/>
-                                        <button type="button" className="btn done exist without-shadow black-font" dir="rtl" lang="fa" disabled>موجودی: ۳</button>
-                                        <button type="button" className="btn done buy without-shadow white-font" dir="rtl" lang="fa"> خرید</button>
-                                        <hr className="line"/>
-                                            <p className="res-name" lang="fa">رستوران خامس</p>
-                        </div>
-                        <div className="food-party-info white-back">
-                            <img className="food-img party" src={pizza} alt="pizza"/>
-                                <br/>
-                                    <span className="restaurant-food-name name-party black-font" lang="fa"> پیتزا</span>
-                                    <span className="food-num rate black-font" dir="rtl" lang="fa">۵  <img  className="star-info" src={star} alt="star"/></span>
-                                    <br/>
-                                        <span dir="rtl" className="price pre"  lang="fa">۳۹۰۰۰ </span><br/>
-                                        <span dir="rtl" className="price black-font post"  lang="fa">۲۹۰۰۰ </span><br/>
-                                        <button type="button" className="btn done exist without-shadow black-font" dir="rtl" lang="fa" disabled>موجودی: ۳</button>
-                                        <button type="button" className="btn done buy without-shadow white-font" dir="rtl" lang="fa"> خرید</button>
-                                        <hr className="line"/>
-                                            <p className="res-name" lang="fa">رستوران خامس</p>
-                        </div>
-                        <div className="food-party-info white-back">
-                            <img className="food-img party" src={pizza} alt="pizza"/>
-                                <br/>
-                                    <span className="restaurant-food-name name-party black-font special" lang="fa"> پیتزا اعلا</span>
-                                    <span className="food-num rate black-font" dir="rtl" lang="fa">۵  <img  className="star-info" src={star} alt="star"/></span>
-                                    <br/>
-                                        <span dir="rtl" className="price pre"  lang="fa">۴۴۰۰۰ </span><br/>
-                                        <span dir="rtl" className="price black-font post"  lang="fa">۳۹۰۰۰ </span><br/>
-                                        <button type="button" className="btn done exist not without-shadow black-font" dir="rtl" lang="fa" disabled>ناموجود</button>
-                                        <button type="button" className="btn done finished buy without-shadow white-font" dir="rtl" lang="fa"  disabled> خرید</button>
-                                        <hr className="line"/>
-                                            <p className="res-name" lang="fa">رستوران خامس</p>
-                        </div>
-                        <div className="food-party-info white-back">
-                            <img className="food-img party" src={pizza} alt="pizza"/>
-                                <br/>
-                                    <span className="restaurant-food-name name-party black-font" lang="fa"> پیتزا</span>
-                                    <span className="food-num rate black-font" dir="rtl" lang="fa">۵  <img  className="star-info" src={star} alt="star"/></span>
-                                    <br/>
-                                        <span dir="rtl" className="price pre"  lang="fa">۳۹۰۰۰ </span><br/>
-                                        <span dir="rtl" className="price black-font post"  lang="fa">۲۹۰۰۰ </span><br/>
-                                        <button type="button" className="btn done exist without-shadow black-font" dir="rtl" lang="fa" disabled>موجودی: ۳</button>
-                                        <button type="button" className="btn done buy without-shadow white-font" dir="rtl" lang="fa"> خرید</button>
-                                        <hr className="line"/>
-                                            <p className="res-name" lang="fa">رستوران خامس</p>
-                        </div>
-                        <div className="food-party-info white-back">
-                            <img className="food-img party" src={pizza} alt="pizza"/>
-                                <br/>
-                                    <span className="restaurant-food-name name-party black-font" lang="fa"> پیتزا</span>
-                                    <span className="food-num rate black-font" dir="rtl" lang="fa">۵  <img  className="star-info" src={star} alt="star"/></span>
-                                    <br/>
-                                        <span dir="rtl" className="price pre"  lang="fa">۳۹۰۰۰ </span><br/>
-                                        <span dir="rtl" className="price black-font post"  lang="fa">۲۹۰۰۰ </span><br/>
-                                        <button type="button" className="btn done exist without-shadow black-font" dir="rtl" lang="fa" disabled>موجودی: ۳</button>
-                                        <button type="button" className="btn done buy without-shadow white-font" dir="rtl" lang="fa"> خرید</button>
-                                        <hr className="line"/>
-                                            <p className="res-name" lang="fa">رستوران خامس</p>
-                        </div>
+                        <SaleFood name="پیتزا" score="۵  " preprice="۳۹۰۰۰ " price="۲۹۰۰۰ " count="۳ " restaurantName="رستوران خامس" status="false"/>
+                        <SaleFood name="پیتزا" score="۵  " preprice="۳۹۰۰۰ " price="۲۹۰۰۰ " count="۳ " restaurantName="رستوران خامس" status="false"/>
+                        <SaleFood name="پیتزا" score="۵  " preprice="۳۹۰۰۰ " price="۲۹۰۰۰ " count="۳ " restaurantName="رستوران خامس" status="false"/>
+                        <SaleFood name="پیتزا" score="۵  " preprice="۳۹۰۰۰ " price="۲۹۰۰۰ " count="۳ " restaurantName="رستوران خامس" status="false"/>
+                        <SaleFood name="پیتزا" score="۵  " preprice="۳۹۰۰۰ " price="۲۹۰۰۰ " count="۳ " restaurantName="رستوران خامس" status="true"/>
+                        <SaleFood name="پیتزا" score="۵  " preprice="۳۹۰۰۰ " price="۲۹۰۰۰ " count="۳ " restaurantName="رستوران خامس" status="false"/>
+                        <SaleFood name="پیتزا" score="۵  " preprice="۳۹۰۰۰ " price="۲۹۰۰۰ " count="۳ " restaurantName="رستوران خامس" status="false"/>
                     </div>
                     <div className="contain-menu">
                         <p className="menu-header dark-green" lang="fa">رستوران ها</p>
                     </div>
                     <div className="restaurants">
-                        <div className="foods res white-back">
-                            <img className="food-img party" src={kfc} alt="pizza"/>
-                                <br/>
-                                <span dir="rtl" className="center">
-                                    <span className="restaurant-food-name black-font">Khames Fried Chicken</span>
-                                </span>
-                            <br/>
-                            <button type="button" className="btn done black-font without-shadow" dir="rtl" lang="fa" onClick={this.goToSpecificRestaurant}>نمایش منو</button>
-                        </div>
-                        <div className="foods res white-back">
-                            <img className="food-img party" src={kfc} alt="pizza"/>
-                            <br/>
-                            <span dir="rtl" className="center">
-                                <span className="restaurant-food-name black-font">Khames Fried Chicken</span>
-                            </span>
-                            <br/>
-                            <button type="button" className="btn done black-font without-shadow" dir="rtl" lang="fa" onClick={this.goToSpecificRestaurant}>نمایش منو</button>
-                        </div>
-                        <div className="foods res white-back">
-                            <img className="food-img party" src={kfc} alt="pizza"/>
-                                <br/>
-                                <span dir="rtl" className="center">
-                                    <span className="restaurant-food-name black-font">Khames Fried Chicken</span>
-                                </span>
-                                <br/>
-                                <button type="button" className="btn done black-font without-shadow" dir="rtl" lang="fa" onClick={this.goToSpecificRestaurant}>نمایش منو</button>
-                        </div>
-                        <div className="foods res white-back">
-                            <img className="food-img party" src={kfc} alt="pizza"/>
-                            <br/>
-                            <span dir="rtl" className="center">
-                                <span className="restaurant-food-name black-font">Khames Fried Chicken</span>
-                            </span>
-                            <br/>
-                            <button type="button" className="btn done black-font without-shadow" dir="rtl" lang="fa" onClick={this.goToSpecificRestaurant}>نمایش منو</button>
-                        </div>
-                        <div className="foods res white-back">
-                            <img className="food-img party" src={kfc} alt="pizza"/>
-                            <br/>
-                            <span dir="rtl" className="center">
-                                <span className="restaurant-food-name black-font">Khames Fried Chicken</span>
-                            </span>
-                            <br/>
-                            <button type="button" className="btn done black-font without-shadow" dir="rtl" lang="fa" onClick={this.goToSpecificRestaurant}>نمایش منو</button>
-                        </div>
-                        <div className="foods res white-back">
-                            <img className="food-img party" src={kfc} alt="pizza"/>
-                            <br/>
-                            <span dir="rtl" className="center">
-                                <span className="restaurant-food-name black-font">Khames Fried Chicken</span>
-                            </span>
-                            <br/>
-                            <button type="button" className="btn done black-font without-shadow" dir="rtl" lang="fa" onClick={this.goToSpecificRestaurant}>نمایش منو</button>
-                        </div>
-                        <div className="foods res white-back">
-                            <img className="food-img party" src={kfc} alt="pizza"/>
-                            <br/>
-                            <span dir="rtl" className="center">
-                                <span className="restaurant-food-name black-font">Khames Fried Chicken</span>
-                            </span>
-                            <br/>
-                            <button type="button" className="btn done black-font without-shadow" dir="rtl" lang="fa" onClick={this.goToSpecificRestaurant}>نمایش منو</button>
-                        </div>
-                        <div className="foods res white-back">
-                            <img className="food-img party" src={kfc} alt="pizza"/>
-                            <br/>
-                            <span dir="rtl" className="center">
-                                <span className="restaurant-food-name black-font">Khames Fried Chicken</span>
-                            </span>
-                            <br/>
-                            <button type="button" className="btn done black-font without-shadow" dir="rtl" lang="fa" onClick={this.goToSpecificRestaurant}>نمایش منو</button>
-                        </div>
+                        <RestaurantInfo name="Khames Fried Chicken"/>
+                        <RestaurantInfo name="Khames Fried Chicken"/>
+                        <RestaurantInfo name="Khames Fried Chicken"/>
+                        <RestaurantInfo name="Khames Fried Chicken"/>
+                        <RestaurantInfo name="Khames Fried Chicken"/>
+                        <RestaurantInfo name="Khames Fried Chicken"/>
+                        <RestaurantInfo name="Khames Fried Chicken"/>
+                        <RestaurantInfo name="Khames Fried Chicken"/>
                     </div>
                 </div>
 
@@ -216,5 +81,61 @@ export class Home extends React.Component{
             </div>
         );
     }
+
+}
+export class SaleFood extends React.Component{
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <div className="food-party-info white-back">
+                <img className="food-img party" src={pizza} alt="pizza"/>
+                <br/>
+                <span className="restaurant-food-name name-party black-font" lang="fa">{this.props.name}</span>
+                <span className="food-num rate black-font" dir="rtl" lang="fa">{this.props.score}<img  className="star-info" src={star} alt="star"/></span>
+                <br/>
+                <span dir="rtl" className="price pre"  lang="fa">{this.props.preprice}</span><br/>
+                <span dir="rtl" className="price black-font post"  lang="fa">{this.props.price}</span><br/>
+                <button type="button" className="btn done exist without-shadow black-font" dir="rtl" lang="fa" disabled>موجودی: {this.props.count}</button>
+                {this.props.status==="true" &&
+                <button type="button" className="btn done finished buy without-shadow white-font" dir="rtl" lang="fa"  disabled> خرید</button>
+                }
+                {this.props.status==="false" &&
+                <button type="button" className="btn done buy without-shadow white-font" dir="rtl" lang="fa"> خرید</button>
+                }
+                <hr className="line"/>
+                <p className="res-name" lang="fa">{this.props.restaurantName}</p>
+            </div>
+        );
+    }
+
+}
+export class RestaurantInfo extends React.Component {
+    constructor(props) {
+        super(props);
+        this.goToSpecificRestaurant = this.goToSpecificRestaurant.bind(this);
+
+    }
+    goToSpecificRestaurant(){
+        ReactDOM.render(<Restaurant/>,document.getElementById("root"));
+
+    }
+
+    render() {
+        return (
+            <div className="foods res white-back">
+                <img className="food-img party" src={kfc} alt="pizza"/>
+                <br/>
+                <span dir="rtl" className="center">
+                    <span className="restaurant-food-name black-font">{this.props.name}</span>
+                </span>
+                <br/>
+                <button type="button" className="btn done black-font without-shadow" dir="rtl" lang="fa" onClick={this.goToSpecificRestaurant}>نمایش منو</button>
+            </div>
+        );
+    }
+
 
 }

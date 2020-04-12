@@ -58,8 +58,8 @@ export class UserInfo extends React.Component{
                             ekhamespanah@yahoo.com
                         </li>
                         <li lang="fa"><i className="flaticon-card" dir="rtl"/>
-                            {/*۱۰۰۰۰۰ تومان*/}
-                            {this.state.credit}
+                            ۱۰۰۰۰۰ تومان
+                            {/*{this.state.credit}*/}
                         </li>
                     </ul>
                 </div>
@@ -68,19 +68,19 @@ export class UserInfo extends React.Component{
     }
 
 
-    fetchCredit(){
-        fetch('users/1/credit')
-            .then(resp => resp.json())
-            .then(data => this.setState(prevState => ({credit : data.credit})));
-    }
-    componentDidMount() {
-        console.log("1");
-        this.fetchCredit();
-        this.timerId = setInterval(
-            () => {this.fetchCredit()}
-            , 5000
-        );
-    }
+    // fetchCredit(){
+    //     fetch('users/1/credit')
+    //         .then(resp => resp.json())
+    //         .then(data => this.setState(prevState => ({credit : data.credit})));
+    // }
+    // componentDidMount() {
+    //     console.log("1");
+    //     this.fetchCredit();
+    //     this.timerId = setInterval(
+    //         () => {this.fetchCredit()}
+    //         , 5000
+    //     );
+    // }
 
     componentWillUnmount() {
         console.log("2");
