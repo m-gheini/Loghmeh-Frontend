@@ -10,24 +10,7 @@ import {Menu} from "./header";
 export class Credit extends React.Component{
     constructor(props) {
         super(props);
-        this.goToOrders = this.goToOrders.bind(this);
-        this.goToCredit = this.goToCredit.bind(this);
-        this.goToHome = this.goToHome.bind(this);
-        this.logOut = this.logOut.bind(this);
     }
-    goToOrders(){
-        ReactDOM.render(<Orders />,document.getElementById("root"));
-    }
-    goToCredit(){
-        ReactDOM.render(<Credit />,document.getElementById("root"));
-    }
-    goToHome(){
-        ReactDOM.render(<Home />,document.getElementById("root"));
-    }
-    logOut(){
-        ReactDOM.render(<SignIn/>,document.getElementById("root"));
-    }
-
     render() {
         return (
             <div className="whole">
