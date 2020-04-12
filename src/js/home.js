@@ -4,8 +4,11 @@ import logo from '../Assets/LOGO.png';
 import pizza from '../Assets/pizza.png';
 import star from '../Assets/star.png';
 import kfc from '../Assets/KFC.png';
-import {Footer, Menu, SignIn} from "./signIn";
+import { SignIn} from "./signIn";
 import {Restaurant} from "./restaurant";
+import {Footer} from "./footer";
+import {Menu} from "./header";
+
 export class Home extends React.Component{
     constructor(props) {
         super(props);

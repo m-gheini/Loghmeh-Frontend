@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom';
 import logo from '../Assets/LOGO.png';
 import {Orders} from "./orders";
 import {Home} from "./home";
-import {Footer, Menu, SignIn} from "./signIn";
+import {SignIn} from "./signIn";
+import {Footer} from "./footer";
+import {Menu} from "./header";
 
 export class Credit extends React.Component{
     constructor(props) {

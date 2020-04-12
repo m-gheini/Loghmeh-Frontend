@@ -796,12 +796,6 @@ input, .submit-btn{
     font-weight: bold;
     font-size: larger;
     text-align: center;
-    margin-top: 40%;
-}
-@media (max-width: 768px) {
-    .no-account{
-        margin-top: 100%;
-    }
 }
 .new-user{
     color: #007bff;

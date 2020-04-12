@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom';
 import logo from '../Assets/LOGO.png';
 import {Credit} from "./credit";
 import {Home} from "./home";
-import {Footer, Menu, SignIn} from "./signIn";
+import {SignIn} from "./signIn";
+import {Footer} from "./footer";
+import {Menu} from "./header";
 
 export class Orders extends React.Component{
     constructor(props) {
