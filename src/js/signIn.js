@@ -53,9 +53,13 @@ export class EntryInput extends React.Component{
         return (
             <div className="form-group" dir="rtl" lang="fa">
                 <label htmlFor={this.props.htmlFor} dir="rtl" className="label dark-green" lang="fa">{this.props.label}</label>
+                {this.props.inputType==="tel" &&
+                <input type={this.props.inputType} className="form-control gray-back" dir="rtl"  pattern="09[0-9]{9}" placeholder={this.props.placeHolder} required lang="fa"/>
+                }
+                {this.props.inputType!=="tel" &&
                 <input type={this.props.inputType} className="form-control gray-back" dir="rtl"  placeholder={this.props.placeHolder} required lang="fa"/>
+                }
             </div>
         );
     }
-
 }
