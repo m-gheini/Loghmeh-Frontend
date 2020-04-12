@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="PROJECT" libraries="{Vazir, babel, bootstrap, jquery, react-router-dom}" />
+    <file url="PROJECT" libraries="{axios}" />
   </component>
 </project>

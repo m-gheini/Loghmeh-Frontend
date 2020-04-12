@@ -1,15 +1,45 @@
 import React from "react";
 import ReactDOM from 'react-dom';
-import logo from '../Assets/LOGO.png';
 import {Orders} from "./orders";
-import {Home} from "./home";
-import {SignIn} from "./signIn";
 import {Footer} from "./footer";
 import {Menu} from "./header";
 
 export class Credit extends React.Component{
     constructor(props) {
         super(props);
+        this.handleIncreasing = this.handleIncreasing.bind(this);
+        this.handleCreditInc = this.handleCreditInc.bind(this);
+        this.goToCredit = this.goToCredit.bind(this);
+        this.state = {incCredit : 0};
+    }
+    goToCredit(){
+        ReactDOM.render(<Credit />,document.getElementById("root"));
+    }
+
+    handleIncreasing() {
+        console.log("HEREEE");
+        var param = {
+            "credit" : this.state.incCredit
+        };
+        var queryString = Object.keys(param).map(function(key){
+            return key + '=' + param[key]
+        });
+        const requestOptions ={
+            method: 'PUT' ,
+            headers: {
+                'content-length' : queryString.length,
+                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+            },
+            body: queryString
+        };
+        console.log(queryString);
+        fetch('http://localhost:8080/users/1', requestOptions)
+            .then(res => res.json());
+    }
+
+    handleCreditInc(event){
+        event.persist();
+        this.setState(prevState => ({incCredit : event.target.value}))
     }
     render() {
         return (
@@ -20,12 +50,14 @@ export class Credit extends React.Component{
                     <div className="container-fluid col-sm-10 box white-back" lang="fa">
                         <Choices location="credit"/>
                         <div className="inner" lang="fa">
-                            <form className="form-inline" dir="rtl" lang="fa">
+                            <form className="form-inline" dir="rtl" onSubmit={this.handleIncreasing} lang="fa">
                                 <span className="form-input" dir="rtl" lang="fa">
-                                    <input type="text" className="form-control gray-back down" placeholder="میزان افزایش اعتبار" size="30" dir="rtl" lang="fa"/>
+                                    <input type="text" className="form-control gray-back down"
+                                           placeholder="میزان افزایش اعتبار" size="30" dir="ltr" lang="fa"
+                                           onChange={this.handleCreditInc}/>
                                 </span>
                                 <span className="form-btn" dir="rtl" lang="fa">
-                                    <button type="submit" className="btn submit-btn down" dir="rtl" lang="fa">افزایش</button>
+                                    <button type="submit" className="btn submit-btn down" dir="rtl" onClick={this.goToCredit} lang="fa" >افزایش</button>
                                 </span>
                             </form>
                         </div>
@@ -41,11 +73,11 @@ export class UserInfo extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            name : null,
-            familyName : null,
-            email : null,
-            credit : null,
-            phoneNumber : null}
+            name : '',
+            familyName : '',
+            email : '',
+            credit : 0,
+            phoneNumber : 0}
     }
     render() {
         return (
