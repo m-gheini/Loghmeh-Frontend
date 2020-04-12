@@ -31,13 +31,13 @@ export class Menu extends React.Component{
                 <div className="container-fluid navbar-content" lang="fa">
                     <ul className="nav navbar-nav navbar-right" lang="fa">
                         <li className="list-item" lang="fa">
-                            <button type="submit" className="without-style" >
+                            <button type="button" className="without-style" >
                                 <img className="img-responsive logo" src={logo} alt="Loghmeh Logo" onClick={this.goToHome}/>
                             </button>
                         </li>
                     </ul>
                     <ul className="nav navbar-nav" lang="fa">
-                        <li className="list-item " dir="rtl"><button className="exit without-style" onClick={this.logOut} lang="fa">خروج</button>
+                        <li className="list-item " dir="rtl"><button type="button" className="exit without-style" onClick={this.logOut} lang="fa">خروج</button>
                         </li>
                         <li className="list-item" dir="rtl" lang="fa">
                             <a href="#" lang="fa">
@@ -51,7 +51,7 @@ export class Menu extends React.Component{
                 {this.props.location==="home" &&
                 <div className="container-fluid navbar-content" lang="fa">
                     <ul className="nav navbar-nav" lang="fa">
-                        <li className="list-item " dir="rtl"><button className="exit without-style" onClick={this.logOut} lang="fa">خروج</button>
+                        <li className="list-item " dir="rtl"><button type="button" className="exit without-style" onClick={this.logOut} lang="fa">خروج</button>
                         </li>
                         <li className="list-item " dir="rtl"><a className="account" href="#" lang="fa">حساب کاربری</a></li>
                         <li className="list-item" dir="rtl">
@@ -67,13 +67,13 @@ export class Menu extends React.Component{
                 <div className="container-fluid navbar-content" lang="fa">
                     <ul className="nav navbar-nav navbar-right" lang="fa">
                         <li className="list-item" lang="fa">
-                            <button type="submit" className="without-style" >
+                            <button type="button" className="without-style" >
                                 <img className="img-responsive logo" src={logo} alt="Loghmeh Logo" onClick={this.goToHome}/>
                             </button>
                         </li>
                     </ul>
                     <ul className="nav navbar-nav" lang="fa">
-                        <li className="list-item " dir="rtl"><button className="exit without-style" onClick={this.logOut} lang="fa">خروج</button>
+                        <li className="list-item " dir="rtl"><button type="button" className="exit without-style" onClick={this.logOut} lang="fa">خروج</button>
                         </li>
                         <li className="list-item" dir="rtl" lang="fa">
                             <a href="#" lang="fa">
