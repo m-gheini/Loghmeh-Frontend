@@ -60,8 +60,8 @@ export class Credit extends React.Component{
                         <div className="inner" lang="fa">
                             <form className="form-inline" dir="rtl" onSubmit={(e) => this.refresh(e)} lang="fa">
                                 <span className="form-input" dir="rtl" lang="fa">
-                                    <input type="text" className="form-control gray-back down"
-                                           placeholder="میزان افزایش اعتبار" size="30" dir="rtl" lang="fa"
+                                    <input type="number" className="form-control gray-back down"
+                                           placeholder="میزان افزایش اعتبار" size="30" dir="rtl" lang="fa" required
                                            onChange={this.handleCreditInc}/>
                                 </span>
                                 <span className="form-btn" dir="rtl" lang="fa">
@@ -105,7 +105,7 @@ export class UserInfo extends React.Component{
                         </li>
                         <li lang="fa"><i className="flaticon-card" dir="rtl"/>
                             {/*۱۰۰۰۰۰ تومان*/}
-                            {this.state.credit}
+                            {this.state.credit} تومان
                         </li>
                     </ul>
                 </div>
