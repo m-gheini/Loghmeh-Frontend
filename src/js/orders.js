@@ -14,11 +14,12 @@ export class Orders extends React.Component{
         this.goToCredit = this.goToCredit.bind(this);
         this.goToHome = this.goToHome.bind(this);
         this.logOut = this.logOut.bind(this);
+        this.fetchOrders = this.fetchOrders.bind(this);
         this.state = {
             orders : []
         }
     }
-    componentDidMount() {
+    fetchOrders(){
         fetch('http://localhost:8080/users/1/orders')
             .then(resp => resp.json())
             .then(data =>
@@ -26,6 +27,18 @@ export class Orders extends React.Component{
                     prevState => ({
                         orders : data
                     })));
+    }
+
+    componentDidMount() {
+        this.fetchOrders();
+        this.timerId = setInterval(
+            () => {this.fetchOrders()}
+            , 1000
+        );
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timerId);
     }
 
 
