@@ -34,51 +34,10 @@ import {Menu} from "./header";
                              <img className="img-responsive restaurant-logo" src={restaurantLogo} alt="Loghmeh Logo" lang="fa"/>
                          </li>
                          <li className="current-restaurant-name black-font" lang="fa">رستوران خامس</li>
-
                      </ul>
                  </div>
                  <div className="container-fluid content" lang="fa">
-                     <div className="container-fluid col-sm-10 cart-box white-back" lang="fa">
-                         <div className="contain" lang="fa">
-                             <p className="text black-font" lang="fa">سبد خرید</p>
-                         </div>
-                         <div className="current-order" lang="fa">
-                             <div className="food-info" lang="fa">
-                                 <div className="food-name black-font" lang="fa">پیتزا اعلا</div>
-                                 <div className="price-info" dir="rtl" lang="fa">
-                                     <ul>
-                                         <li dir="rtl" lang="fa" className="black-font">
-                                             <button className="without-style white-back"><i className="flaticon-plus dark-green" dir="rtl"/></button>
-                                             ۲
-                                             <button className="without-style white-back"><i className="flaticon-minus" dir="rtl"/></button></li>
-                                         <li dir="rtl" className="little-price black-font" lang="fa">۷۸۰۰۰ تومان</li>
-                                     </ul>
-                                 </div>
-                             </div>
-                             <div className="food-info" lang="fa">
-                                 <div className="food-name black-font" lang="fa">پیتزا نیمه اعلا</div>
-                                 <div className="price-info" dir="rtl" lang="fa">
-                                     <ul lang="fa">
-                                         <li dir="rtl" lang="fa" className="black-font">
-                                             <button className="without-style white-back"><i className="flaticon-plus dark-green" dir="rtl"/></button>
-                                             ۱
-                                             <button className="without-style white-back"><i className="flaticon-minus" dir="rtl"/></button>
-                                         </li>
-                                         <li lang="fa" dir="rtl" className="little-price black-font">۲۹۰۰۰ تومان</li>
-                                     </ul>
-                                 </div>
-                             </div>
-                         </div>
-                         <br/>
-                         <div className="total black-font" dir="rtl" lang="fa">جمع کل: ۱۰۷۰۰۰ تومان</div>
-                         <br/>
-                         <div>
-                             <button type="submit" className="btn submit-btn accept-btn" dir="rtl"
-                                     lang="fa">تایید نهایی
-                             </button>
-                         </div>
-                     </div>
-
+                     <Cart/>
                      <div className="menu">
                          <div className="contain-menu">
                              <p className="menu-header dark-green" lang="fa">منوی غذا </p>
@@ -122,6 +81,56 @@ import {Menu} from "./header";
                  {this.props.status==="available" &&
                  <button type="button" className="btn done without-shadow black-font" dir="rtl" lang="fa"> افزودن به سبد خرید</button>
                  }
+             </div>
+         );
+     }
+ }
+ export class Cart extends React.Component{
+     constructor(props) {
+         super(props);
+     }
+
+     render() {
+         return (
+             <div className="container-fluid col-sm-10 cart-box white-back" lang="fa">
+                 <div className="contain" lang="fa">
+                     <p className="text black-font" lang="fa">سبد خرید</p>
+                 </div>
+                 <div className="current-order" lang="fa">
+                     <FoodInCart name="پیتزا اعلا" count="۲" cost=" ۷۸۰۰۰ تومان "/>
+                     <FoodInCart name="پیتزا نیمه اعلا" count="۱" cost=" ۲۹۰۰۰ تومان "/>
+                 </div>
+                 <br/>
+                 <div className="total black-font" dir="rtl" lang="fa">جمع کل: ۱۰۷۰۰۰ تومان</div>
+                 <br/>
+                 <div>
+                     <button type="submit" className="btn submit-btn accept-btn" dir="rtl"
+                             lang="fa">تایید نهایی
+                     </button>
+                 </div>
+             </div>
+         );
+     }
+ }
+ export class FoodInCart extends React.Component{
+     constructor(props) {
+         super(props);
+     }
+
+     render() {
+         return (
+             <div className="food-info" lang="fa">
+                 <div className="food-name black-font" lang="fa">{this.props.name}</div>
+                 <div className="price-info" dir="rtl" lang="fa">
+                     <ul lang="fa">
+                         <li dir="rtl" lang="fa" className="black-font">
+                             <button className="without-style white-back"><i className="flaticon-plus dark-green" dir="rtl"/></button>
+                             {this.props.count}
+                             <button className="without-style white-back"><i className="flaticon-minus" dir="rtl"/></button>
+                         </li>
+                         <li lang="fa" dir="rtl" className="little-price black-font">{this.props.cost}</li>
+                     </ul>
+                 </div>
              </div>
          );
      }
