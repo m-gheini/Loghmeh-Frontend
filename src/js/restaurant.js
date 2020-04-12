@@ -30,8 +30,8 @@ import {Menu} from "./header";
                  <Menu location="restaurant"/>
                  <div className="container-fluid top pink-back" dir="rtl" lang="fa">
                      <ul className="nav top restaurant-logo-top" lang="fa">
-                         <li className="list-item"><img className="img-responsive restaurant-logo"
-                                                        src={restaurantLogo} alt="Loghmeh Logo" lang="fa"/>
+                         <li className="list-item">
+                             <img className="img-responsive restaurant-logo" src={restaurantLogo} alt="Loghmeh Logo" lang="fa"/>
                          </li>
                          <li className="current-restaurant-name black-font" lang="fa">رستوران خامس</li>
 
@@ -49,10 +49,10 @@ import {Menu} from "./header";
                                      <ul>
                                          <li dir="rtl" lang="fa" className="black-font">
                                              <button className="without-style white-back"><i className="flaticon-plus dark-green" dir="rtl"/></button>
-                                             ۲ <button className="without-style white-back"><i className="flaticon-minus" dir="rtl"/></button></li>
+                                             ۲
+                                             <button className="without-style white-back"><i className="flaticon-minus" dir="rtl"/></button></li>
                                          <li dir="rtl" className="little-price black-font" lang="fa">۷۸۰۰۰ تومان</li>
                                      </ul>
-
                                  </div>
                              </div>
                              <div className="food-info" lang="fa">
@@ -66,141 +66,64 @@ import {Menu} from "./header";
                                          </li>
                                          <li lang="fa" dir="rtl" className="little-price black-font">۲۹۰۰۰ تومان</li>
                                      </ul>
-
                                  </div>
                              </div>
                          </div>
                          <br/>
-                             <div className="total black-font" dir="rtl" lang="fa">جمع کل: ۱۰۷۰۰۰ تومان</div>
-                             <br/>
-                                 <div>
-                                     <button type="submit" className="btn submit-btn accept-btn" dir="rtl"
-                                             lang="fa">تایید نهایی
-                                     </button>
-                                 </div>
+                         <div className="total black-font" dir="rtl" lang="fa">جمع کل: ۱۰۷۰۰۰ تومان</div>
+                         <br/>
+                         <div>
+                             <button type="submit" className="btn submit-btn accept-btn" dir="rtl"
+                                     lang="fa">تایید نهایی
+                             </button>
+                         </div>
                      </div>
+
                      <div className="menu">
                          <div className="contain-menu">
                              <p className="menu-header dark-green" lang="fa">منوی غذا </p>
                          </div>
                          <div className="foods-container">
-                             <div className="foods white-back">
-                                 <img className="food-img" src={pizza} alt="pizza"/>
-                                     <br/>
-                <span dir="rtl" className="center">
-                    <span className="restaurant-food-name black-font" lang="fa"> پیتزا اعلا</span>
-                    <span className="food-num black-font" dir="rtl" lang="fa">   ۵<img className="star" src={star} alt="star"/></span>
-                </span><br/>
-                <span dir="rtl" className="price black-font" lang="fa">۳۹۰۰۰ تومان</span><br/>
-                <button type="button" className="btn done without-shadow black-font" dir="rtl" lang="fa"> افزودن به سبد خرید</button>
-                             </div>
-                             <div className="foods white-back">
-                                 <img className="food-img" src={pizza} alt="pizza"/>
-                                     <br/>
-                <span dir="rtl" className="center">
-            <span className="restaurant-food-name black-font" lang="fa"> پیتزا نیمه اعلا</span>
-            <span className="food-num black-font" dir="rtl" lang="fa">   ۴<img alt="star" className="star" src={star}/></span>
-            </span>
-                                         <br/>
-                                             <span dir="rtl" className="price black-font"
-                                                   lang="fa">۲۹۰۰۰ تومان</span><br/>
-                                             <button type="button"
-                                                     className="btn done without-shadow gray-back black-font" dir="rtl"
-                                                     disabled lang="fa">ناموجود
-                                             </button>
-                             </div>
-                             <div className="foods white-back">
-                                 <img className="food-img" src={pizza} alt="pizza"/>
-                                     <br/>
-                <span dir="rtl" className="center">
-            <span className="restaurant-food-name black-font" lang="fa"> پیتزا اعلا</span>
-            <span className="food-num black-font" dir="rtl" lang="fa">   ۵<img alt="star" className="star"
-                                                                               src={star}/></span>
-            </span>
-                                         <br/>
-                                             <span dir="rtl" className="price black-font"
-                                                   lang="fa">۳۹۰۰۰ تومان</span><br/>
-                                             <button type="button" className="btn done without-shadow black-font"
-                                                     dir="rtl" lang="fa"> افزودن به سبد خرید
-                                             </button>
-                             </div>
-                             <div className="foods white-back">
-                                 <img className="food-img" src={pizza} alt="pizza"/>
-                                     <br/>
-                                     <span dir="rtl" className="center">
-                                         <span className="restaurant-food-name black-font" lang="fa"> پیتزا اعلا</span>
-                                         <span className="food-num black-font" dir="rtl" lang="fa">   ۵<img alt="star" className="star" src={star} /></span>
-                                     </span>
-                                     <br/>
-                                     <span dir="rtl" className="price black-font" lang="fa">۳۹۰۰۰ تومان</span><br/>
-                                     <button type="button" className="btn done without-shadow black-font" dir="rtl"> افزودن به سبد خرید
-                                     </button>
-                             </div>
-                             <div className="foods white-back">
-                                 <img className="food-img" alt="pizza" src={pizza}/>
-                                     <br/>
-                                     <span dir="rtl" className="center">
-                                         <span className="restaurant-food-name black-font" lang="fa"> پیتزا اعلا</span>
-                                         <span className="food-num black-font" dir="rtl" lang="fa">   ۵<img alt="star" className="star" src={star}/></span>
-                                     </span>
-                                         <br/>
-                                             <span dir="rtl" className="price black-font"
-                                                   lang="fa">۳۹۰۰۰ تومان</span><br/>
-                                             <button type="button" className="btn done black-font without-shadow"
-                                                     dir="rtl" lang="fa"> افزودن به سبد خرید
-                                             </button>
-                             </div>
-                             <div className="foods white-back">
-                                 <img className="food-img" alt="pizza" src={pizza}/>
-                                     <br/>
-                <span dir="rtl" className="center">
-            <span className="restaurant-food-name black-font" lang="fa"> پیتزا اعلا</span>
-            <span className="food-num black-font" dir="rtl" lang="fa">   ۵<img alt="star" className="star"
-                                                                               src={star}/></span>
-            </span>
-                                         <br/>
-                                             <span dir="rtl" className="price black-font"
-                                                   lang="fa">۳۹۰۰۰ تومان</span><br/>
-                                             <button type="button" className="btn done black-font without-shadow"
-                                                     dir="rtl" lang="fa"> افزودن به سبد خرید
-                                             </button>
-                             </div>
-                             <div className="foods white-back">
-                                 <img className="food-img" alt="pizza" src={pizza}/>
-                                     <br/>
-                <span dir="rtl" className="center">
-            <span className="restaurant-food-name black-font" lang="fa"> پیتزا اعلا</span>
-            <span className="food-num black-font" dir="rtl" lang="fa">   ۵<img alt="star" className="star"
-                                                                               src={star}/></span>
-            </span>
-                                         <br/>
-                                             <span dir="rtl" className="price black-font"
-                                                   lang="fa">۳۹۰۰۰ تومان</span><br/>
-                                             <button type="button" className="btn done black-font without-shadow"
-                                                     dir="rtl" lang="fa"> افزودن به سبد خرید
-                                             </button>
-                             </div>
-                             <div className="foods white-back">
-                                 <img className="food-img" alt="pizza" src={pizza}/>
-                                     <br/>
-                <span dir="rtl" className="center">
-            <span className="restaurant-food-name black-font" lang="fa"> پیتزا اعلا</span>
-            <span className="food-num black-font" dir="rtl" lang="fa">   ۵<img alt="star" className="star"
-                                                                               src={star}/></span>
-            </span>
-                                         <br/>
-                                             <span dir="rtl" className="price black-font"
-                                                   lang="fa">۳۹۰۰۰ تومان</span><br/>
-                                             <button type="button" className="btn done black-font without-shadow"
-                                                     dir="rtl" lang="fa"> افزودن به سبد خرید
-                                             </button>
-                             </div>
+                             <Food name=" پیتزا اعلا" score="   ۵" cost="۳۹۰۰۰ تومان" status="available"/>
+                             <Food name=" پیتزا نیمه اعلا" score="   ۴" cost="۲۹۰۰۰ تومان" status="done"/>
+                             <Food name=" پیتزا اعلا" score="   ۵" cost="۳۹۰۰۰ تومان" status="available"/>
+                             <Food name=" پیتزا اعلا" score="   ۵" cost="۳۹۰۰۰ تومان" status="available"/>
+                             <Food name=" پیتزا اعلا" score="   ۵" cost="۳۹۰۰۰ تومان" status="available"/>
+                             <Food name=" پیتزا اعلا" score="   ۵" cost="۳۹۰۰۰ تومان" status="available"/>
+                             <Food name=" پیتزا اعلا" score="   ۵" cost="۳۹۰۰۰ تومان" status="available"/>
+                             <Food name=" پیتزا اعلا" score="   ۵" cost="۳۹۰۰۰ تومان" status="available"/>
                          </div>
                      </div>
                  </div>
-
                  <Footer/>
              </div>
          );
      }
+ }
+ export class Food extends React.Component {
+     constructor(props) {
+         super(props);
+     }
+
+     render() {
+         return (
+             <div className="foods white-back">
+                 <img className="food-img" src={pizza} alt="pizza"/>
+                 <br/>
+                 <span dir="rtl" className="center">
+                     <span className="restaurant-food-name black-font" lang="fa">{this.props.name}</span>
+                     <span className="food-num black-font" dir="rtl" lang="fa">{this.props.score}<img className="star" src={star} alt="star"/></span>
+                 </span>
+                 <br/>
+                 <span dir="rtl" className="price black-font" lang="fa">{this.props.cost}</span><br/>
+                 {this.props.status==="done" &&
+                 <button type="button" className="btn done without-shadow gray-back black-font" dir="rtl" disabled lang="fa">ناموجود</button>
+                 }
+                 {this.props.status==="available" &&
+                 <button type="button" className="btn done without-shadow black-font" dir="rtl" lang="fa"> افزودن به سبد خرید</button>
+                 }
+             </div>
+         );
+     }
+
  }
