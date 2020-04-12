@@ -8,12 +8,43 @@ import { SignIn} from "./signIn";
 import {Restaurant} from "./restaurant";
 import {Footer} from "./footer";
 import {Menu} from "./header";
+import {AllOrders} from "./orders";
 
 export class Home extends React.Component{
     constructor(props) {
         super(props);
         this.logOut = this.logOut.bind(this);
+        this.fetchSaleRestaurants = this.fetchSaleRestaurants.bind(this);
+        this.fetchRestaurants = this.fetchRestaurants.bind(this);
+        this.state = {
+            restaurants : [],
+            saleFoods : []
+        }
     }
+    fetchRestaurants(){
+        fetch('http://localhost:8080/restaurants')
+            .then(resp => resp.json())
+            .then(data =>
+                this.setState(
+                    prevState => ({
+                        restaurants : data
+                    })));
+    }
+    fetchSaleRestaurants(){
+        fetch('http://localhost:8080/saleFoods')
+            .then(resp => resp.json())
+            .then(data =>
+                this.setState(
+                    prevState => ({
+                        saleFoods : data
+                    })));
+    }
+
+    componentDidMount() {
+        this.fetchRestaurants();
+        this.fetchSaleRestaurants()
+    }
+
     logOut(){
         ReactDOM.render(<SignIn/>,document.getElementById("root"));
     }
@@ -53,28 +84,11 @@ export class Home extends React.Component{
                             <p className="dark-green text" lang="fa">زمان باقی مانده: ۲۱:۴۸</p>
                         </div>
                     </div>
-                    <div className="party-info">
-                        <SaleFood name="پیتزا" score="۵  " preprice="۳۹۰۰۰ " price="۲۹۰۰۰ " count="۳ " restaurantName="رستوران خامس" status="false"/>
-                        <SaleFood name="پیتزا" score="۵  " preprice="۳۹۰۰۰ " price="۲۹۰۰۰ " count="۳ " restaurantName="رستوران خامس" status="false"/>
-                        <SaleFood name="پیتزا" score="۵  " preprice="۳۹۰۰۰ " price="۲۹۰۰۰ " count="۳ " restaurantName="رستوران خامس" status="false"/>
-                        <SaleFood name="پیتزا" score="۵  " preprice="۳۹۰۰۰ " price="۲۹۰۰۰ " count="۳ " restaurantName="رستوران خامس" status="false"/>
-                        <SaleFood name="پیتزا" score="۵  " preprice="۳۹۰۰۰ " price="۲۹۰۰۰ " count="۳ " restaurantName="رستوران خامس" status="true"/>
-                        <SaleFood name="پیتزا" score="۵  " preprice="۳۹۰۰۰ " price="۲۹۰۰۰ " count="۳ " restaurantName="رستوران خامس" status="false"/>
-                        <SaleFood name="پیتزا" score="۵  " preprice="۳۹۰۰۰ " price="۲۹۰۰۰ " count="۳ " restaurantName="رستوران خامس" status="false"/>
-                    </div>
+                    <AllSaleFoods saleFoods={this.state.saleFoods}/>
                     <div className="contain-menu">
                         <p className="menu-header dark-green" lang="fa">رستوران ها</p>
                     </div>
-                    <div className="restaurants">
-                        <RestaurantInfo name="Khames Fried Chicken"/>
-                        <RestaurantInfo name="Khames Fried Chicken"/>
-                        <RestaurantInfo name="Khames Fried Chicken"/>
-                        <RestaurantInfo name="Khames Fried Chicken"/>
-                        <RestaurantInfo name="Khames Fried Chicken"/>
-                        <RestaurantInfo name="Khames Fried Chicken"/>
-                        <RestaurantInfo name="Khames Fried Chicken"/>
-                        <RestaurantInfo name="Khames Fried Chicken"/>
-                    </div>
+                    <AllRestaurants restaurants={this.state.restaurants}/>
                 </div>
 
                 <Footer/>
@@ -83,6 +97,33 @@ export class Home extends React.Component{
     }
 
 }
+export class AllSaleFoods extends React.Component{
+    render() {
+        return (
+            <div className="party-info">
+                {this.props.saleFoods.map(function (saleFoods,i) {
+                    return  <SaleFood name={saleFoods.name} score={saleFoods.popularity} preprice={saleFoods.oldPrice} price={saleFoods.price} count={saleFoods.count} restaurantName={saleFoods.restaurantName} image={saleFoods.image}/>
+
+                })}
+            </div>
+        );
+    }
+
+}
+export class AllRestaurants extends React.Component{
+    render() {
+        return (
+            <div className="restaurants">
+            {this.props.restaurants.map(function (restaurants,i) {
+                    return <RestaurantInfo name={restaurants.name} image={restaurants.logo}/>
+                    }
+                )}
+            </div>
+        );
+    }
+
+}
+
 export class SaleFood extends React.Component{
     constructor(props) {
         super(props);
@@ -91,7 +132,7 @@ export class SaleFood extends React.Component{
     render() {
         return (
             <div className="food-party-info white-back">
-                <img className="food-img party" src={pizza} alt="pizza"/>
+                <img className="food-img party" src={this.props.image} alt="pizza"/>
                 <br/>
                 <span className="restaurant-food-name name-party black-font" lang="fa">{this.props.name}</span>
                 <span className="food-num rate black-font" dir="rtl" lang="fa">{this.props.score}<img  className="star-info" src={star} alt="star"/></span>
@@ -99,10 +140,10 @@ export class SaleFood extends React.Component{
                 <span dir="rtl" className="price pre"  lang="fa">{this.props.preprice}</span><br/>
                 <span dir="rtl" className="price black-font post"  lang="fa">{this.props.price}</span><br/>
                 <button type="button" className="btn done exist without-shadow black-font" dir="rtl" lang="fa" disabled>موجودی: {this.props.count}</button>
-                {this.props.status==="true" &&
+                {this.props.count===0 &&
                 <button type="button" className="btn done finished buy without-shadow white-font" dir="rtl" lang="fa"  disabled> خرید</button>
                 }
-                {this.props.status==="false" &&
+                {this.props.status!==0 &&
                 <button type="button" className="btn done buy without-shadow white-font" dir="rtl" lang="fa"> خرید</button>
                 }
                 <hr className="line"/>
@@ -126,7 +167,7 @@ export class RestaurantInfo extends React.Component {
     render() {
         return (
             <div className="foods res white-back">
-                <img className="food-img party" src={kfc} alt="pizza"/>
+                <img className="food-img party" src={this.props.image} alt="pizza"/>
                 <br/>
                 <span dir="rtl" className="center">
                     <span className="restaurant-food-name black-font">{this.props.name}</span>

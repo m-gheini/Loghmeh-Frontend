@@ -144,18 +144,18 @@ export class Choices extends React.Component{
     render() {
         return (
             <div>
-            {this.props.location==="credit" &&
-            <span className="container btn-group col-sm-8 choices white-back" dir="rtl" lang="fa">
+                {this.props.location==="credit" &&
+                <span className="container btn-group col-sm-8 choices white-back" dir="rtl" lang="fa">
                     <button type="button" className="btn btn-primary orders pink-back white-font" dir="rtl" onClick={this.goToCredit} lang="fa">افزایش اعتبار</button>
                     <button type="button" className="btn btn-primary credit white-back black-font left-border" dir="rtl" onClick={this.goToOrders} lang="fa">سفارش ها</button>
             </span>
-            }
-            {this.props.location === "orders" &&
-            <span className="container btn-group col-sm-8 choices pink-back" dir="rtl" lang="fa">
+                }
+                {this.props.location === "orders" &&
+                <span className="container btn-group col-sm-8 choices pink-back" dir="rtl" lang="fa">
                 <button type="button" className="btn btn-primary orders black-font white-back" dir="rtl" onClick={this.goToCredit} lang="fa">افزایش اعتبار</button>
                 <button type="button" className="btn btn-primary credit white-font pink-back left-border" dir="rtl" onClick={this.goToOrders} lang="fa">سفارش ها</button>
             </span>
-            }
+                }
             </div>
         );
     }
