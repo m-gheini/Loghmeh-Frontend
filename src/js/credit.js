@@ -40,26 +40,32 @@ export class Credit extends React.Component{
 export class UserInfo extends React.Component{
     constructor(props) {
         super(props);
-        this.state = {credit : 0};
+        this.state = {
+            name : null,
+            familyName : null,
+            email : null,
+            credit : null,
+            phoneNumber : null}
     }
-
     render() {
         return (
             <div className="container-fluid user-info pink-back" dir="rtl" lang="fa">
-                <div className="col-sm-6 important" dir="rtl" lang="fa"><span className="flaticon-account " lang="fa"/>احسان
-                    خامس پناه
+                <div className="col-sm-6 important" dir="rtl" lang="fa"><span className="flaticon-account " lang="fa"/>
+                    {this.state.name} {this.state.familyName}
                 </div>
                 <div className="col-sm-6 info" dir="rtl" lang="fa">
                     <ul lang="fa">
                         <li lang="fa"><i className="flaticon-phone" dir="rtl"/>
-                            ۰۹۱۲۳۴۵۶۷۸۹
+                            {/*۰۹۱۲۳۴۵۶۷۸۹*/}
+                            {this.state.phoneNumber}
                         </li>
                         <li lang="fa"><i className="flaticon-mail" dir="rtl"/>
-                            ekhamespanah@yahoo.com
+                            {/*ekhamespanah@yahoo.com*/}
+                            {this.state.email}
                         </li>
                         <li lang="fa"><i className="flaticon-card" dir="rtl"/>
-                            ۱۰۰۰۰۰ تومان
-                            {/*{this.state.credit}*/}
+                            {/*۱۰۰۰۰۰ تومان*/}
+                            {this.state.credit}
                         </li>
                     </ul>
                 </div>
@@ -68,24 +74,19 @@ export class UserInfo extends React.Component{
     }
 
 
-    // fetchCredit(){
-    //     fetch('users/1/credit')
-    //         .then(resp => resp.json())
-    //         .then(data => this.setState(prevState => ({credit : data.credit})));
-    // }
-    // componentDidMount() {
-    //     console.log("1");
-    //     this.fetchCredit();
-    //     this.timerId = setInterval(
-    //         () => {this.fetchCredit()}
-    //         , 5000
-    //     );
-    // }
-
-    componentWillUnmount() {
-        console.log("2");
-        clearInterval(this.timerId);
+    componentDidMount() {
+        fetch('http://localhost:8080/users/1')
+            .then(resp => resp.json())
+            .then(data =>
+                this.setState(
+                    prevState => ({
+                        phoneNumber : data.phoneNumber,
+                        name : data.name,
+                        familyName : data.familyName,
+                        email : data.email,
+                        credit : data.credit})));
     }
+
 }
 export class Choices extends React.Component{
     constructor(props) {
