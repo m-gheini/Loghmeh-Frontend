@@ -97,13 +97,13 @@ export class Order extends React.Component{
                 <div className="restaurant-name-width restaurant-order black-font" lang="fa">{this.props.name}</div>
                 <div className="situation restaurant-order black-font" lang="fa">
                     <span className="form-btn" dir="rtl" lang="fa">
-                        {this.props.status==="finding delivery" &&
+                        {this.props.status==="delivering" &&
                         <button type="button" className="btn on-way" dir="rtl" disabled lang="fa">پیک در مسیر</button>
                         }
                         {this.props.status==="done" &&
                         <button type="button" className="btn done black-font" dir="rtl" lang="fa">مشاهده فاکتور</button>
                         }
-                        {this.props.status==="delivering" &&
+                        {this.props.status==="finding delivery" &&
                         <button type="button" className="btn searching dark-green" dir="rtl" disabled lang="fa">در جست و جوی پیک</button>
                         }
                     </span>
