@@ -17,11 +17,15 @@ export class Restaurant extends React.Component{
         this.goToHome = this.goToHome.bind(this);
         this.logOut = this.logOut.bind(this);
         this.fetchFoods = this.fetchFoods.bind(this);
+        this.fetchCart = this.fetchCart.bind(this);
         this.state = {
-            foods : []
+            foods : [],
+            foodsInCart : [],
+            saleFoodsInCart : []
         }
 
     }
+
     fetchFoods(){
         fetch('http://localhost:8080/restaurants/'+this.props.restaurant.id)
             .then(resp => resp.json())
@@ -33,6 +37,7 @@ export class Restaurant extends React.Component{
     }
     componentDidMount() {
         this.fetchFoods();
+        this.fetchCart();
     }
 
     goToHome(){
@@ -40,6 +45,18 @@ export class Restaurant extends React.Component{
     }
     logOut(){
         ReactDOM.render(<SignIn/>,document.getElementById("root"));
+    }
+
+    fetchCart() {
+        console.log("HI");
+        fetch('http://localhost:8080/users/1/cart')
+            .then(resp => resp.json())
+            .then(data =>
+                this.setState(
+                    prevState => ({
+                        foodsInCart : data.foods,
+                        saleFoodsInCart : data.saleFoods
+                    })));
     }
 
     render() {
@@ -55,7 +72,7 @@ export class Restaurant extends React.Component{
                     </ul>
                 </div>
                 <div className="container-fluid content" lang="fa">
-                    <Cart/>
+                    <Cart foods={this.state.foodsInCart} saleFoods={this.state.saleFoodsInCart}/>
                     <div className="menu">
                         <div className="contain-menu">
                             <p className="menu-header dark-green" lang="fa">منوی غذا </p>
@@ -142,15 +159,16 @@ export class Food extends React.Component {
 export class Cart extends React.Component{
     constructor(props) {
         super(props);
-        this.state = {
-            foods : []
-        }
+        // this.state = {
+        //     foods : []
+        // }
 
     }
 
     render() {
         return (
             <div className="container-fluid col-sm-10 cart-box white-back" lang="fa">
+                {console.log(this.props.foods)}
                 <div className="contain" lang="fa">
                     <p className="text black-font" lang="fa">سبد خرید</p>
                 </div>
