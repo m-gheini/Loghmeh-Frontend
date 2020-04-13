@@ -73,7 +73,7 @@ export class AllFoods extends React.Component{
         return (
             <div className="foods-container">
                 {this.props.foods.map(function (foods,i) {
-                        return <Food name={foods.name} image={foods.image} score={foods.popularity} cost={foods.price} status="available"/>
+                        return <Food name={foods.name} image={foods.image} score={foods.popularity} cost={foods.price} foodInfo={foods} status="available"/>
                     }
                 )}
             </div>
@@ -85,6 +85,28 @@ export class AllFoods extends React.Component{
 export class Food extends React.Component {
     constructor(props) {
         super(props);
+        this.addToCartHandler = this.addToCartHandler.bind(this);
+    }
+
+    addToCartHandler(){
+        var params = {
+            "restaurantId": this.props.foodInfo.restaurantId,
+            "foodName" : this.props.foodInfo.name,
+        };
+        var queryString = Object.keys(params).map(function(key) {
+            return key + '=' + params[key]
+        }).join('&');
+        console.log(queryString);
+        fetch('http://localhost:8080/users/1/cart?'+queryString,{
+            method: 'PUT' ,
+            headers: {
+                'content-length' : queryString.length,
+                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+            },
+            body: queryString
+        })
+            .then(res => console.log(res));
+
     }
 
     render() {
@@ -102,7 +124,7 @@ export class Food extends React.Component {
                 <button type="button" className="btn done without-shadow gray-back black-font" dir="rtl" disabled lang="fa">ناموجود</button>
                 }
                 {this.props.status==="available" &&
-                <button type="button" className="btn done without-shadow black-font" dir="rtl" lang="fa" > افزودن به سبد خرید</button>
+                <button type="button" className="btn done without-shadow black-font" dir="rtl" lang="fa" onClick={this.addToCartHandler}> افزودن به سبد خرید</button>
                 }
             </div>
         );
