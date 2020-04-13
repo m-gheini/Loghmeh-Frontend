@@ -37,7 +37,8 @@ export class Restaurant extends React.Component{
             .then(data =>
                 this.setState(
                     prevState => ({
-                        foods : data.menu
+                        foods : data.menu,
+                        loading : false
                     })));
     }
     componentDidMount() {
@@ -45,7 +46,6 @@ export class Restaurant extends React.Component{
         console.log(this.state.loading)
         this.fetchFoods();
         this.fetchCart();
-        this.setState(prevState => ({loading : false}));
     }
 
     goToHome(){
