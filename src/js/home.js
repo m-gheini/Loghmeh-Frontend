@@ -55,7 +55,7 @@ export class Home extends React.Component{
         this.fetchRestaurants();
         this.fetchSaleRestaurants();
         this.timerId = setInterval(
-            () => {this.fetchSaleRestaurants()}
+            () => {this.fetchSaleRestaurants(); this.forceUpdate(); console.log("AFTERforce");}
             , 1800000
         );
         this.timer = setInterval(
@@ -120,6 +120,9 @@ export class Home extends React.Component{
 
 }
 export class AllSaleFoods extends React.Component{
+    constructor(props) {
+        super(props);
+    }
     render() {
         return (
             <div className="party-info">
@@ -133,6 +136,9 @@ export class AllSaleFoods extends React.Component{
 
 }
 export class AllRestaurants extends React.Component{
+    constructor(props) {
+        super(props);
+    }
     render() {
         return (
             <div className="restaurants">

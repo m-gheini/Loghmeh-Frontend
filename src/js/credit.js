@@ -4,18 +4,14 @@ import {Orders} from "./orders";
 import {Footer} from "./footer";
 import {Menu} from "./header";
 import {Loader} from "./loading";
+import {SignIn} from "./signIn";
 
 export class Credit extends React.Component{
     constructor(props) {
         super(props);
         this.handleIncreasing = this.handleIncreasing.bind(this);
         this.handleCreditInc = this.handleCreditInc.bind(this);
-        this.goToCredit = this.goToCredit.bind(this);
         this.state = {incCredit : 0};
-    }
-    goToCredit(event){
-        //event.preventDefault();
-        ReactDOM.render(<Credit />,document.getElementById("root"));
     }
 
     handleIncreasing(event) {
@@ -34,7 +30,8 @@ export class Credit extends React.Component{
             },
             body: queryString
         })
-            .then(res => console.log(res));
+            .then(res => console.log(res))
+
 
     }
 
@@ -47,19 +44,21 @@ export class Credit extends React.Component{
         return (
             <div className="whole">
                 <Menu location="userInfo"/>
-                <UserInfo/>
+                <UserInfo />
                 <div className="container-fluid credit-content" lang="fa">
                     <div className="container-fluid col-sm-10 box white-back" lang="fa">
                         <Choices location="credit"/>
                         <div className="inner" lang="fa">
-                            <form className="form-inline" dir="rtl" onSubmit={(e) => this.refresh(e)} lang="fa">
+                            <form className="form-inline" dir="rtl" lang="fa">
                                 <span className="form-input" dir="rtl" lang="fa">
                                     <input type="number" className="form-control gray-back down credit-input"
                                            placeholder="میزان افزایش اعتبار" size="30" dir="rtl" lang="fa" required
                                            onChange={this.handleCreditInc}/>
                                 </span>
                                 <span className="form-btn" dir="rtl" lang="fa">
-                                    <button type="submit" className="btn submit-btn down" dir="rtl" onClick={(e) => this.handleIncreasing(e)} lang="fa" >افزایش</button>
+                                    <button type="submit" className="btn submit-btn down" dir="rtl"
+                                            onClick={(e) => {this.handleIncreasing(e)}} lang="fa" >افزایش
+                                    </button>
                                 </span>
                             </form>
                         </div>

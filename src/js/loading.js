@@ -9,8 +9,8 @@ export class Loader extends React.Component{
     }
     render(){
         return(
-            <div class= "loader">
-                <div class="in-loader">
+            <div className= "loader">
+                <div className="in-loader">
                     <img src={spinner}/>
                 </div>
             </div>
