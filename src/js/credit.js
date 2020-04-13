@@ -42,8 +42,10 @@ export class Credit extends React.Component{
             .then(data=>{
                 if(this.state.status !== 200)
                     window.alert(this.state.massage)
+                if(this.state.status===200) {
+                    window.alert(this.state.massage)
+                }
             });
-        return <Credit />
 
     }
 
@@ -126,17 +128,25 @@ export class UserInfo extends React.Component{
 
     componentDidMount() {
         this.setState(prevState => ({loading : true}));
-        fetch('http://localhost:8080/users/1')
-            .then(resp => resp.json())
-            .then(data =>
-                this.setState(
-                    prevState => ({
-                        phoneNumber : data.phoneNumber,
-                        name : data.name,
-                        familyName : data.familyName,
-                        email : data.email,
-                        credit : data.credit,
-                        loading: false})));
+        this.timer = setInterval(
+            () => {
+                fetch('http://localhost:8080/users/1')
+                    .then(resp => resp.json())
+                    .then(data =>
+                        this.setState(
+                            prevState => ({
+                                phoneNumber : data.phoneNumber,
+                                name : data.name,
+                                familyName : data.familyName,
+                                email : data.email,
+                                credit : data.credit,
+                                loading: false})));
+            }
+            ,1000
+        )
+    }
+    componentWillUnmount() {
+        clearInterval(this.timer);
     }
 
 }
@@ -165,7 +175,7 @@ export class Choices extends React.Component{
                 {this.props.location === "orders" &&
                 <span className="container btn-group col-sm-8 choices pink-back" dir="rtl" lang="fa">
                 <button type="button" className="btn btn-primary orders black-font white-back" dir="rtl" onClick={this.goToCredit} lang="fa">افزایش اعتبار</button>
-                <button type="button" className="btn btn-primary credit white-font pink-back left-border" dir="rtl" onClick={this.goToOrders} lang="fa">سفارش ها</button>
+                <button type="submit" className="btn btn-primary credit white-font pink-back left-border" dir="rtl" onSubmit={this.render} lang="fa">سفارش ها</button>
             </span>
                 }
             </div>
