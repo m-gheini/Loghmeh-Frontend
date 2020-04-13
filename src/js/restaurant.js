@@ -6,7 +6,7 @@ import pizza from '../Assets/pizza.png';
 import star from '../Assets/star.png';
 import kfc from '../Assets/KFC.png';
 import {Orders} from "./orders";
-import {Home} from "./home";
+import {AllRestaurants, Home, RestaurantInfo} from "./home";
 import {SignIn} from "./signIn";
 import {Footer} from "./footer";
 import {Menu} from "./header";
@@ -16,7 +16,25 @@ import {Menu} from "./header";
          super(props);
          this.goToHome = this.goToHome.bind(this);
          this.logOut = this.logOut.bind(this);
+         this.fetchFoods = this.fetchFoods.bind(this);
+         this.state = {
+             foods : []
+         }
+
      }
+     fetchFoods(){
+         fetch('http://localhost:8080/restaurants/'+this.props.restaurant.id)
+             .then(resp => resp.json())
+             .then(data =>
+                 this.setState(
+                     prevState => ({
+                         foods : data.menu
+                     })));
+     }
+    componentDidMount() {
+         this.fetchFoods();
+    }
+
      goToHome(){
          ReactDOM.render(<Home />,document.getElementById("root"));
      }
@@ -31,9 +49,9 @@ import {Menu} from "./header";
                  <div className="container-fluid top pink-back" dir="rtl" lang="fa">
                      <ul className="nav top restaurant-logo-top" lang="fa">
                          <li className="list-item">
-                             <img className="img-responsive restaurant-logo" src={restaurantLogo} alt="Loghmeh Logo" lang="fa"/>
+                             <img className="img-responsive restaurant-logo" src={this.props.restaurant.logo} alt="Loghmeh Logo" lang="fa"/>
                          </li>
-                         <li className="current-restaurant-name black-font" lang="fa">رستوران خامس</li>
+                         <li className="current-restaurant-name black-font" lang="fa">{this.props.restaurant.name}</li>
                      </ul>
                  </div>
                  <div className="container-fluid content" lang="fa">
@@ -42,16 +60,7 @@ import {Menu} from "./header";
                          <div className="contain-menu">
                              <p className="menu-header dark-green" lang="fa">منوی غذا </p>
                          </div>
-                         <div className="foods-container">
-                             <Food name=" پیتزا اعلا" score="   ۵" cost="۳۹۰۰۰ تومان" status="available"/>
-                             <Food name=" پیتزا نیمه اعلا" score="   ۴" cost="۲۹۰۰۰ تومان" status="done"/>
-                             <Food name=" پیتزا اعلا" score="   ۵" cost="۳۹۰۰۰ تومان" status="available"/>
-                             <Food name=" پیتزا اعلا" score="   ۵" cost="۳۹۰۰۰ تومان" status="available"/>
-                             <Food name=" پیتزا اعلا" score="   ۵" cost="۳۹۰۰۰ تومان" status="available"/>
-                             <Food name=" پیتزا اعلا" score="   ۵" cost="۳۹۰۰۰ تومان" status="available"/>
-                             <Food name=" پیتزا اعلا" score="   ۵" cost="۳۹۰۰۰ تومان" status="available"/>
-                             <Food name=" پیتزا اعلا" score="   ۵" cost="۳۹۰۰۰ تومان" status="available"/>
-                         </div>
+                         <AllFoods foods={this.state.foods}/>
                      </div>
                  </div>
                  <Footer/>
@@ -59,7 +68,21 @@ import {Menu} from "./header";
          );
      }
  }
- export class Food extends React.Component {
+export class AllFoods extends React.Component{
+    render() {
+        return (
+            <div className="foods-container">
+                {this.props.foods.map(function (foods,i) {
+                        return <Food name={foods.name} image={foods.image} score={foods.popularity} cost={foods.price} status="available"/>
+                    }
+                )}
+            </div>
+        );
+    }
+
+}
+
+export class Food extends React.Component {
      constructor(props) {
          super(props);
      }
@@ -67,7 +90,7 @@ import {Menu} from "./header";
      render() {
          return (
              <div className="foods white-back">
-                 <img className="food-img" src={pizza} alt="pizza"/>
+                 <img className="food-img" src={this.props.image} alt="pizza"/>
                  <br/>
                  <span dir="rtl" className="center">
                      <span className="restaurant-food-name black-font" lang="fa">{this.props.name}</span>

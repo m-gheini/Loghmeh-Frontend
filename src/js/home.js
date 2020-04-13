@@ -16,7 +16,9 @@ export class Home extends React.Component{
         this.logOut = this.logOut.bind(this);
         this.fetchSaleRestaurants = this.fetchSaleRestaurants.bind(this);
         this.fetchRestaurants = this.fetchRestaurants.bind(this);
+        this.setTime = this.setTime.bind(this);
         this.state = {
+            remainingTime : 1800000,
             restaurants : [],
             saleFoods : []
         }
@@ -28,6 +30,15 @@ export class Home extends React.Component{
                 this.setState(
                     prevState => ({
                         restaurants : data
+                    })));
+    }
+    setTime(){
+        fetch('http://localhost:8080/foodPartyTime')
+            .then(resp => resp.json())
+            .then(data =>
+                this.setState(
+                    prevState => ({
+                        remainingTime : data.remainingTime
                     })));
     }
     fetchSaleRestaurants(){
@@ -42,7 +53,18 @@ export class Home extends React.Component{
 
     componentDidMount() {
         this.fetchRestaurants();
-        this.fetchSaleRestaurants()
+        this.fetchSaleRestaurants();
+        this.timerId = setInterval(
+            () => {this.fetchSaleRestaurants()}
+            , 1800000
+        );
+        this.timer = setInterval(
+            () => {this.setTime()}
+            ,1000
+        )
+    }
+    componentWillUnmount() {
+        clearInterval(this.timer);
     }
 
     logOut(){
@@ -81,7 +103,7 @@ export class Home extends React.Component{
                     </div>
                     <div className="white-back timer" lang="fa">
                         <div  className="inner" lang="fa">
-                            <p className="dark-green text" lang="fa">زمان باقی مانده: ۲۱:۴۸</p>
+                            <p className="dark-green text" lang="fa">زمان باقی مانده:{Math.floor((this.state.remainingTime) / 60000)}:{(this.state.remainingTime) % 60000}</p>
                         </div>
                     </div>
                     <AllSaleFoods saleFoods={this.state.saleFoods}/>
@@ -115,7 +137,7 @@ export class AllRestaurants extends React.Component{
         return (
             <div className="restaurants">
             {this.props.restaurants.map(function (restaurants,i) {
-                    return <RestaurantInfo name={restaurants.name} image={restaurants.logo}/>
+                    return <RestaurantInfo name={restaurants.name} image={restaurants.logo} restaurant={restaurants}/>
                     }
                 )}
             </div>
@@ -160,7 +182,7 @@ export class RestaurantInfo extends React.Component {
 
     }
     goToSpecificRestaurant(){
-        ReactDOM.render(<Restaurant/>,document.getElementById("root"));
+        ReactDOM.render(<Restaurant restaurant={this.props.restaurant}/>,document.getElementById("root"));
 
     }
 
