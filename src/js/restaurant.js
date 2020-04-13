@@ -86,6 +86,10 @@ export class Food extends React.Component {
     constructor(props) {
         super(props);
         this.addToCartHandler = this.addToCartHandler.bind(this);
+        this.state={
+            status : null,
+            massage :null
+        }
     }
 
     addToCartHandler(){
@@ -105,7 +109,12 @@ export class Food extends React.Component {
             },
             body: queryString
         })
-            .then(res => console.log(res));
+            .then(response => response.json())
+            .then(data => {this.setState(prevState => ({status: data.errorCode,massage: data.errorMassage}))})
+            .then(data=>{
+                if(this.state.status !== 200)
+                    window.alert(this.state.massage)
+            })
 
     }
 
