@@ -5,7 +5,7 @@ import restaurantLogo from '../Assets/RestaurantLogo.png';
 import pizza from '../Assets/pizza.png';
 import star from '../Assets/star.png';
 import kfc from '../Assets/KFC.png';
-import {Orders} from "./orders";
+import {Order, Orders} from "./orders";
 import {AllRestaurants, Home, RestaurantInfo} from "./home";
 import {SignIn} from "./signIn";
 import {Footer} from "./footer";
@@ -142,6 +142,10 @@ export class Food extends React.Component {
 export class Cart extends React.Component{
     constructor(props) {
         super(props);
+        this.state = {
+            foods : []
+        }
+
     }
 
     render() {
@@ -151,8 +155,12 @@ export class Cart extends React.Component{
                     <p className="text black-font" lang="fa">سبد خرید</p>
                 </div>
                 <div className="current-order" lang="fa">
-                    <FoodInCart name="پیتزا اعلا" count="۲" cost=" ۷۸۰۰۰ تومان "/>
-                    <FoodInCart name="پیتزا نیمه اعلا" count="۱" cost=" ۲۹۰۰۰ تومان "/>
+                    {this.props.foods.map(function (foods,i) {
+                            return <FoodInCart name={foods.name} count="1" cost={foods.price} />
+                        }
+                    )}
+                    {/*<FoodInCart name="پیتزا اعلا" count="۲" cost=" ۷۸۰۰۰ تومان "/>*/}
+                    {/*<FoodInCart name="پیتزا نیمه اعلا" count="۱" cost=" ۲۹۰۰۰ تومان "/>*/}
                 </div>
                 <br/>
                 <div className="total black-font" dir="rtl" lang="fa">جمع کل: ۱۰۷۰۰۰ تومان</div>
@@ -164,6 +172,16 @@ export class Cart extends React.Component{
                 </div>
             </div>
         );
+    }
+
+    componentDidMount() {
+        fetch('http://localhost:8080/users/1/cart')
+            .then(resp => resp.json())
+            .then(data =>
+                this.setState(
+                    prevState => ({
+                        foods : data.foods
+                    })));
     }
 }
 export class FoodInCart extends React.Component{
