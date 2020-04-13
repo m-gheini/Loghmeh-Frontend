@@ -102,7 +102,7 @@ export class Food extends React.Component {
                 <button type="button" className="btn done without-shadow gray-back black-font" dir="rtl" disabled lang="fa">ناموجود</button>
                 }
                 {this.props.status==="available" &&
-                <button type="button" className="btn done without-shadow black-font" dir="rtl" lang="fa"> افزودن به سبد خرید</button>
+                <button type="button" className="btn done without-shadow black-font" dir="rtl" lang="fa" > افزودن به سبد خرید</button>
                 }
             </div>
         );

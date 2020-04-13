@@ -54,7 +54,7 @@ export class Credit extends React.Component{
                         <div className="inner" lang="fa">
                             <form className="form-inline" dir="rtl" onSubmit={(e) => this.refresh(e)} lang="fa">
                                 <span className="form-input" dir="rtl" lang="fa">
-                                    <input type="number" className="form-control gray-back down"
+                                    <input type="number" className="form-control gray-back down credit-input"
                                            placeholder="میزان افزایش اعتبار" size="30" dir="rtl" lang="fa" required
                                            onChange={this.handleCreditInc}/>
                                 </span>

@@ -29,7 +29,7 @@ export class SignUp extends React.Component{
                         <br/>
                         <br/>
                         ثبت نام کرده اید؟
-                        <button type="submit"  className="new-user" onClick={this.goToSignIn}>وارد شوید.</button>
+                        <button type="button"  className="new-user" onSubmit={this.goToSignIn}>وارد شوید.</button>
                     </div>
                 </form>
             </div>
