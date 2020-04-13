@@ -154,9 +154,11 @@ export class SaleFood extends React.Component{
     render() {
         return (
             <div className="food-party-info white-back">
+                <div>
                 <img className="food-img party" src={this.props.image} alt="pizza"/>
+                </div>
                 <br/>
-                <span className="restaurant-food-name name-party black-font" lang="fa">{this.props.name}</span>
+                <div className="restaurant-food-name name-party black-font" lang="fa">{this.props.name}</div>
                 <span className="food-num rate black-font" dir="rtl" lang="fa">{this.props.score}<img  className="star-info" src={star} alt="star"/></span>
                 <br/>
                 <span dir="rtl" className="price pre"  lang="fa">{this.props.preprice}</span><br/>
