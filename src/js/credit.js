@@ -140,7 +140,6 @@ export class UserInfo extends React.Component{
                                 credit : data.credit,
                                 loading: false})));
     }
-
 }
 export class Choices extends React.Component{
     constructor(props) {

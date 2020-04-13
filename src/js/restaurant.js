@@ -173,7 +173,7 @@ export class Cart extends React.Component{
                     <p className="text black-font" lang="fa">سبد خرید</p>
                 </div>
                 <div className="current-order" lang="fa">
-                    {this.props.foods.map(function (foods,i) {
+                    {this.props.foods===[] && this.props.foods.map(function (foods,i) {
                             return <FoodInCart name={foods.name} count="1" cost={foods.price} />
                         }
                     )}
