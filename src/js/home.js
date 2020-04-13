@@ -9,6 +9,7 @@ import {Restaurant} from "./restaurant";
 import {Footer} from "./footer";
 import {Menu} from "./header";
 import {AllOrders} from "./orders";
+import {Loader} from "./loading";
 
 export class Home extends React.Component{
     constructor(props) {
@@ -18,6 +19,7 @@ export class Home extends React.Component{
         this.fetchRestaurants = this.fetchRestaurants.bind(this);
         this.setTime = this.setTime.bind(this);
         this.state = {
+            loading : false,
             remainingTime : 1800000,
             restaurants : [],
             saleFoods : []
@@ -52,8 +54,10 @@ export class Home extends React.Component{
     }
 
     componentDidMount() {
+        this.setState(prevState => ({loading : true}));
         this.fetchRestaurants();
         this.fetchSaleRestaurants();
+        this.setState(prevState => ({loading : false}));
         this.timerId = setInterval(
             () => {this.fetchSaleRestaurants(); this.forceUpdate(); console.log("AFTERforce");}
             , 1800000
@@ -62,6 +66,7 @@ export class Home extends React.Component{
             () => {this.setTime()}
             ,1000
         )
+
     }
     componentWillUnmount() {
         clearInterval(this.timer);
@@ -77,6 +82,8 @@ export class Home extends React.Component{
     render() {
         return (
             <div className="whole">
+                { this.state.loading ? <Loader/> :
+                    <div className="whole">
                 <Menu location="home"/>
                 <div className = "overlay" dir = "rtl" lang = "fa" >
                     <ul className = "nav top restaurant-logo-top" lang = "fa" >
@@ -114,6 +121,8 @@ export class Home extends React.Component{
                 </div>
 
                 <Footer/>
+                    </div>
+                }
             </div>
         );
     }

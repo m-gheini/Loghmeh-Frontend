@@ -10,6 +10,7 @@ import {AllRestaurants, Home, RestaurantInfo} from "./home";
 import {SignIn} from "./signIn";
 import {Footer} from "./footer";
 import {Menu} from "./header";
+import {Loader} from "./loading";
 
 export class Restaurant extends React.Component{
     constructor(props) {
@@ -19,9 +20,13 @@ export class Restaurant extends React.Component{
         this.fetchFoods = this.fetchFoods.bind(this);
         this.fetchCart = this.fetchCart.bind(this);
         this.state = {
+            loading : true,
             foods : [],
             foodsInCart : [],
-            saleFoodsInCart : []
+            foodsInCartCount : [],
+            saleFoodsInCart : [],
+            saleFoodsInCartCount : []
+
         }
 
     }
@@ -36,8 +41,11 @@ export class Restaurant extends React.Component{
                     })));
     }
     componentDidMount() {
+        this.setState(prevState => ({loading : true}));
+        console.log(this.state.loading)
         this.fetchFoods();
         this.fetchCart();
+        this.setState(prevState => ({loading : false}));
     }
 
     goToHome(){
@@ -48,20 +56,24 @@ export class Restaurant extends React.Component{
     }
 
     fetchCart() {
-        console.log("HI");
         fetch('http://localhost:8080/users/1/cart')
             .then(resp => resp.json())
             .then(data =>
                 this.setState(
                     prevState => ({
                         foodsInCart : data.foods,
-                        saleFoodsInCart : data.saleFoods
+                        foodsInCartCount : data.numberOfFood,
+                        saleFoodsInCart : data.saleFoods,
+                        saleFoodsInCartCount : data.numberOfSaleFood
+
                     })));
     }
 
     render() {
         return (
             <div className="whole">
+                { this.state.loading ? <Loader/> :
+                    <div className="whole">
                 <Menu location="restaurant"/>
                 <div className="container-fluid top pink-back" dir="rtl" lang="fa">
                     <ul className="nav top restaurant-logo-top" lang="fa">
@@ -72,7 +84,7 @@ export class Restaurant extends React.Component{
                     </ul>
                 </div>
                 <div className="container-fluid content" lang="fa">
-                    <Cart foods={this.state.foodsInCart} saleFoods={this.state.saleFoodsInCart}/>
+                    <Cart foods={this.state.foodsInCart} foodCount={this.state.foodsInCartCount} saleFoods={this.state.saleFoodsInCart} saleFoodCount={this.state.saleFoodsInCartCount}/>
                     <div className="menu">
                         <div className="contain-menu">
                             <p className="menu-header dark-green" lang="fa">منوی غذا </p>
@@ -81,6 +93,8 @@ export class Restaurant extends React.Component{
                     </div>
                 </div>
                 <Footer/>
+                    </div>
+                }
             </div>
         );
     }
@@ -159,9 +173,9 @@ export class Food extends React.Component {
 export class Cart extends React.Component{
     constructor(props) {
         super(props);
-        // this.state = {
-        //     foods : []
-        // }
+        this.state = {
+            fullCost : 0
+        }
 
     }
 
@@ -173,8 +187,12 @@ export class Cart extends React.Component{
                     <p className="text black-font" lang="fa">سبد خرید</p>
                 </div>
                 <div className="current-order" lang="fa">
-                    {this.props.foods===[] && this.props.foods.map(function (foods,i) {
+                    {this.props.foods===[] || this.props.foods.map(function (foods,i) {
                             return <FoodInCart name={foods.name} count="1" cost={foods.price} />
+                        }
+                    )}
+                    {this.props.saleFoods===[] || this.props.saleFoods.map(function (saleFoods,i) {
+                            return <FoodInCart name={saleFoods.name} count="1" cost={saleFoods.price} />
                         }
                     )}
                     {/*<FoodInCart name="پیتزا اعلا" count="۲" cost=" ۷۸۰۰۰ تومان "/>*/}
