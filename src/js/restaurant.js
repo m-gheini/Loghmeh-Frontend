@@ -148,7 +148,6 @@ export class Food extends React.Component {
             })
 
     }
-
     render() {
         return (
             <div className="foods white-back">
@@ -173,11 +172,32 @@ export class Food extends React.Component {
 export class Cart extends React.Component{
     constructor(props) {
         super(props);
+        this.finalize = this.finalize.bind(this);
+
         this.state = {
-            fullCost : 0
+            fullCost : 0,
+            status : null,
+            massage :null
         }
 
     }
+    finalize(){
+        fetch('http://localhost:8080/users/1/cart',{
+            method: 'POST' ,
+            headers: {
+                'content-length' : 0,
+                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+            },
+        })
+            .then(response => response.json())
+            .then(data => {this.setState(prevState => ({status: data.errorCode,massage: data.errorMassage}))})
+            .then(data=>{
+                if(this.state.status !== 200 && this.state.status!==201 && this.state.status)
+                    window.alert(this.state.massage)
+            })
+
+    }
+
 
     render() {
         return (
@@ -203,7 +223,7 @@ export class Cart extends React.Component{
                 <br/>
                 <div>
                     <button type="submit" className="btn submit-btn accept-btn" dir="rtl"
-                            lang="fa">تایید نهایی
+                            lang="fa" onClick={this.finalize}>تایید نهایی
                     </button>
                 </div>
             </div>

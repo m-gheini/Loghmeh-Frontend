@@ -40,11 +40,8 @@ export class Credit extends React.Component{
             .then(response => response.json())
             .then(data => {this.setState(prevState => ({status: data.errorCode,massage: data.errorMassage}))})
             .then(data=>{
-                if(this.state.status !== 200)
+                if(this.state.status !== 200 && this.state.status!==201 && this.state.status)
                     window.alert(this.state.massage)
-                if(this.state.status===200) {
-                    window.alert(this.state.massage)
-                }
             });
 
     }
