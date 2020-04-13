@@ -214,6 +214,7 @@ ul{
 }
 .form-input{
     margin-bottom: 10%;
+    width: 100%;
     text-align: center;
     position: relative;
     top:20%;
@@ -222,7 +223,6 @@ ul{
     color: #f7fff7;
     background-color: #4ecdc4;
     width: 15%;
-    margin-right: 4%;
     border: 1px solid #ccc;
 }
 .btn:hover{
@@ -645,7 +645,7 @@ input, .submit-btn{
 .search-place{
     margin-top:1%;
     margin-bottom:1%;
-    margin-left:5%;
+    margin-left: 1%;
 }
 @media (max-width: 768px) {
     .search-place {

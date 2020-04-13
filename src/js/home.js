@@ -86,11 +86,11 @@ export class Home extends React.Component{
                                 <div className = "inner" lang = "fa" >
                                     <form className = "form-inline" dir = "rtl" lang = "fa" >
                                         <span className = "form-input" dir = "rtl" lang = "fa" >
-                                            <input type = "text" className = "form-control search-place gray-back" placeholder = "نام غذا" size = "10" dir = "rtl" lang = "fa" />
-                                                <input type = "text" className = "form-control search-place gray-back" placeholder = "نام رستوران" size = "10" dir = "rtl" lang = "fa" />
+                                            <input type = "text" className = "sol-sm-4 form-control search-place gray-back" placeholder = "نام غذا" dir = "rtl" lang = "fa" />
+                                                <input type = "text" className = " sol-sm-4 form-control search-place gray-back" placeholder = "نام رستوران" dir = "rtl" lang = "fa" />
                                         </span>
                                         <span className="form-btn" dir="rtl" lang="fa">
-                                            <button type="submit" className="btn search-btn submit-btn search-place black-font" dir="rtl" lang="fa">جست و جو</button>
+                                            <button type="submit" className=" sol-sm-4 btn search-btn submit-btn search-place black-font" dir="rtl" lang="fa">جست و جو</button>
                                         </span>
                                     </form>
                                 </div>
@@ -103,7 +103,7 @@ export class Home extends React.Component{
                     </div>
                     <div className="white-back timer" lang="fa">
                         <div  className="inner" lang="fa">
-                            <p className="dark-green text" lang="fa">زمان باقی مانده:{Math.floor((this.state.remainingTime) / 60000)}:{(this.state.remainingTime) % 60000}</p>
+                            <p className="dark-green text" lang="fa">زمان باقی مانده:{Math.floor((this.state.remainingTime) / 60000)}:{((this.state.remainingTime) % 60000)/1000}</p>
                         </div>
                     </div>
                     <AllSaleFoods saleFoods={this.state.saleFoods}/>
