@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import {Orders} from "./orders";
 import {Footer} from "./footer";
 import {Menu} from "./header";
+import {Loader} from "./loading";
 
 export class Credit extends React.Component{
     constructor(props) {
@@ -10,7 +11,6 @@ export class Credit extends React.Component{
         this.handleIncreasing = this.handleIncreasing.bind(this);
         this.handleCreditInc = this.handleCreditInc.bind(this);
         this.goToCredit = this.goToCredit.bind(this);
-        this.refresh = this.refresh.bind(this);
         this.state = {incCredit : 0};
     }
     goToCredit(event){
@@ -35,13 +35,7 @@ export class Credit extends React.Component{
             body: queryString
         })
             .then(res => console.log(res));
-        //this.refresh(event);
 
-    }
-
-    refresh(event){
-        //event.preventDefault();
-        window.location.reload();
     }
 
 
@@ -81,6 +75,7 @@ export class UserInfo extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
+            loading : false,
             name : '',
             familyName : '',
             email : '',
@@ -90,6 +85,8 @@ export class UserInfo extends React.Component{
     render() {
         return (
             <div className="container-fluid user-info pink-back" dir="rtl" lang="fa">
+                { this.state.loading ? <Loader/> :
+                    <div>
                 <div className="col-sm-6 important" dir="rtl" lang="fa"><span className="flaticon-account " lang="fa"/>
                     {this.state.name} {this.state.familyName}
                 </div>
@@ -109,12 +106,15 @@ export class UserInfo extends React.Component{
                         </li>
                     </ul>
                 </div>
+                    </div>
+                    }
             </div>
         );
     }
 
 
     componentDidMount() {
+        this.setState(prevState => ({loading : true}));
         fetch('http://localhost:8080/users/1')
             .then(resp => resp.json())
             .then(data =>
@@ -124,7 +124,8 @@ export class UserInfo extends React.Component{
                         name : data.name,
                         familyName : data.familyName,
                         email : data.email,
-                        credit : data.credit})));
+                        credit : data.credit,
+                        loading: false})));
     }
 
 }
