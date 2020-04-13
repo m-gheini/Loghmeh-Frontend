@@ -19,7 +19,7 @@ export class Home extends React.Component{
         this.fetchRestaurants = this.fetchRestaurants.bind(this);
         this.setTime = this.setTime.bind(this);
         this.state = {
-            loading : false,
+            loading : true,
             remainingTime : 1800000,
             restaurants : [],
             saleFoods : []
@@ -31,7 +31,8 @@ export class Home extends React.Component{
             .then(data =>
                 this.setState(
                     prevState => ({
-                        restaurants : data
+                        restaurants : data,
+                        loading : false
                     })));
     }
     setTime(){
@@ -57,7 +58,6 @@ export class Home extends React.Component{
         this.setState(prevState => ({loading : true}));
         this.fetchRestaurants();
         this.fetchSaleRestaurants();
-        this.setState(prevState => ({loading : false}));
         this.timerId = setInterval(
             () => {this.fetchSaleRestaurants(); this.forceUpdate(); console.log("AFTERforce");}
             , 1800000
