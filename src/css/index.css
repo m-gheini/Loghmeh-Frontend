@@ -108,6 +108,7 @@ ul{
 .content{
     padding-top: 8.5%;
     min-height: fit-content;
+    min-height: 100%;
     height: fit-content;
     background-color: rgba(247,255,247,1);
 }
@@ -588,7 +589,8 @@ input, .submit-btn{
     text-align: center;
     width: 30%;
     float: right;
-    height: fit-content;
+    height: 25vh;
+    overflow: scroll;
     margin-bottom: 2%;
 }
 .foods-container{
@@ -600,6 +602,7 @@ input, .submit-btn{
     border-right: 0.5px dashed rgba(26,83,92,0.5);
 }
 .food-img{
+    height: 50%;
     margin-bottom: 1%;
     width: 58.33%;
 }
@@ -698,7 +701,7 @@ input, .submit-btn{
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);
     display: inline-block;
     padding: 14px;
-    width:fit-content;
+    width: 300px;
     position: relative;
     margin-left: 1%;
     margin-right: 1%;
