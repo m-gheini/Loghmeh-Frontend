@@ -11,7 +11,10 @@ export class Credit extends React.Component{
         super(props);
         this.handleIncreasing = this.handleIncreasing.bind(this);
         this.handleCreditInc = this.handleCreditInc.bind(this);
-        this.state = {incCredit : 0};
+        this.state = {incCredit : 0,
+            status : null,
+            massage :null
+        }
     }
 
     handleIncreasing(event) {
@@ -30,7 +33,12 @@ export class Credit extends React.Component{
             },
             body: queryString
         })
-            .then(res => console.log(res))
+            .then(response => response.json())
+            .then(data => {this.setState(prevState => ({status: data.errorCode,massage: data.errorMassage}))})
+            .then(data=>{
+                if(this.state.status !== 200)
+                    window.alert(this.state.massage)
+            })
 
 
     }

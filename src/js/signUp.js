@@ -2,6 +2,8 @@ import React from "react";
 import ReactDOM from 'react-dom';
 import logo from '../Assets/LOGO.png';
 import {EntryInput, SignIn} from "./signIn";
+import {Menu} from "./header";
+import {Footer} from "./footer";
 
 export class SignUp extends React.Component{
     constructor(props) {
@@ -13,9 +15,11 @@ export class SignUp extends React.Component{
         ReactDOM.render(<SignIn />,document.getElementById("root"));
     }
     render(){
-        //TODO
         return(
-            <div >
+            <div className='whole'>
+                <Menu location="entry"/>
+                <div className="container-fluid main-content "  lang="fa">
+                    <div className="col-sm-6 sighnup-div white-back" lang="fa" id="info-box">
                 <div className="form-div" dir="rtl" lang="fa">فرم ثبت نام</div>
                 <form className="col-sm-10 signup-form" action="" dir="rtl" lang="fa" onSubmit={this.goToSignIn}>
                     <br/>
@@ -29,9 +33,13 @@ export class SignUp extends React.Component{
                         <br/>
                         <br/>
                         ثبت نام کرده اید؟
-                        <button type="button"  className="new-user" onSubmit={this.goToSignIn}>وارد شوید.</button>
+                        <button type="button"  className="new-user" onClick={this.goToSignIn}>وارد شوید.</button>
                     </div>
                 </form>
+                    </div>
+                </div>
+                <Footer/>
+
             </div>
     );
     }

@@ -15,7 +15,7 @@ export class SignIn extends React.Component{
         this.signIn = this.signIn.bind(this);
     }
     goToSignUp(){
-        ReactDOM.render(<SignUp />,document.getElementById("info-box"));
+        ReactDOM.render(<SignUp />,document.getElementById("root"));
     }
     signIn(){
         ReactDOM.render(<Credit /> ,document.getElementById("root"));
