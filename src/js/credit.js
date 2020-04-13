@@ -16,6 +16,10 @@ export class Credit extends React.Component{
             massage :null
         }
     }
+    goToCredit(){
+        //event.preventDefault();
+        ReactDOM.render(<Credit />,document.getElementById("root"));
+    }
 
     handleIncreasing(event) {
         event.preventDefault();
@@ -38,8 +42,8 @@ export class Credit extends React.Component{
             .then(data=>{
                 if(this.state.status !== 200)
                     window.alert(this.state.massage)
-            })
-
+            });
+        return <Credit />
 
     }
 
