@@ -128,8 +128,6 @@ export class UserInfo extends React.Component{
 
     componentDidMount() {
         this.setState(prevState => ({loading : true}));
-        this.timer = setInterval(
-            () => {
                 fetch('http://localhost:8080/users/1')
                     .then(resp => resp.json())
                     .then(data =>
@@ -141,12 +139,6 @@ export class UserInfo extends React.Component{
                                 email : data.email,
                                 credit : data.credit,
                                 loading: false})));
-            }
-            ,1000
-        )
-    }
-    componentWillUnmount() {
-        clearInterval(this.timer);
     }
 
 }
