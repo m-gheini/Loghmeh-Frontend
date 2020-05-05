@@ -40,8 +40,8 @@ export class SignUp extends React.Component{
             headers: {
                 'content-length' : queryString.length,
                 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-            },
-            body: queryString
+            }
+            // body: queryString
         })
             .then(response => response.json())
             .then(data => {this.setState(prevState => ({status: data.errorCode,massage: data.errorMassage}))})
