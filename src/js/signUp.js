@@ -24,12 +24,6 @@ export class SignUp extends React.Component{
     handleAddUser(event) {
         event.preventDefault();
         event.persist();
-        this.setState(prevState => ({userName : event.target[0].value}));
-        this.setState(prevState => ({familyName : event.target[1].value}));
-        this.setState(prevState => ({email : event.target[2].value}));
-        this.setState(prevState => ({phoneNumber : event.target[3].value}));
-        this.setState(prevState => ({password : event.target[4].value}));
-
         var params = {
             "password" : event.target[4].value,
             "name" : event.target[0].value,
@@ -40,6 +34,7 @@ export class SignUp extends React.Component{
         var queryString = Object.keys(params).map(function(key){
             return key + '=' + params[key]
         }).join('&');
+        console.log(queryString);
         fetch('http://localhost:8080/users?'+queryString,{
             method: 'POST' ,
             headers: {
@@ -51,10 +46,14 @@ export class SignUp extends React.Component{
             .then(response => response.json())
             .then(data => {this.setState(prevState => ({status: data.errorCode,massage: data.errorMassage}))})
             .then(data=>{
+                console.log(queryString);
+
                 if(this.state.status !== 200 && this.state.status!==201 && this.state.status)
                     window.alert(this.state.massage);
-                else
+                else {
+                    window.alert(this.state.massage);
                     ReactDOM.render(<SignIn />,document.getElementById("root"));
+                }
             });
     }
 
