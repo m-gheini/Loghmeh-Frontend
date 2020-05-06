@@ -22,6 +22,8 @@ export class Credit extends React.Component{
     }
 
     handleIncreasing(event) {
+        console.log(localStorage);
+
         event.preventDefault();
         var params = {
             "credit" : this.state.incCredit
@@ -32,6 +34,7 @@ export class Credit extends React.Component{
         fetch('http://localhost:8080/users/1?'+queryString,{
             method: 'PUT' ,
             headers: {
+                'Authorization': localStorage.getItem("jwt"),
                 'content-length' : queryString.length,
                 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
             },

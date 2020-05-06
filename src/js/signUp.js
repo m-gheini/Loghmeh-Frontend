@@ -49,7 +49,7 @@ export class SignUp extends React.Component{
                 console.log(queryString);
 
                 if(this.state.status !== 200 && this.state.status!==201 && this.state.status)
-                    window.alert(this.state.massage);
+                    window.alert("account created successfully");
                 else {
                     window.alert(this.state.massage);
                     ReactDOM.render(<SignIn />,document.getElementById("root"));
@@ -58,6 +58,7 @@ export class SignUp extends React.Component{
     }
 
     goToSignIn(event){
+        console.log(localStorage);
         ReactDOM.render(<SignIn />,document.getElementById("root"));
     }
     render(){

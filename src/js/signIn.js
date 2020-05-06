@@ -47,6 +47,8 @@ export class SignIn extends React.Component{
                 if(this.state.status !== 200 && this.state.status)
                     window.alert(this.state.massage);
                 else {
+                    localStorage.setItem("jwt",this.state.massage);
+                    console.log(localStorage);
                     //window.alert(this.state.massage);
                     ReactDOM.render(<Credit />,document.getElementById("root"));
                 }
