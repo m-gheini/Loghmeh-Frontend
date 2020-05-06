@@ -20,6 +20,38 @@ export class SignIn extends React.Component{
     signIn(){
         ReactDOM.render(<Credit /> ,document.getElementById("root"));
     }
+    handleEnterUser(event) {
+        event.preventDefault();
+        event.persist();
+        var params = {
+            "email" : event.target[0].value,
+            "password" : event.target[1].value
+        };
+        var queryString = Object.keys(params).map(function(key){
+            return key + '=' + params[key]
+        }).join('&');
+        console.log(queryString);
+        fetch('http://localhost:8080/login?'+queryString,{
+            method: 'POST' ,
+            headers: {
+                'content-length' : queryString.length,
+                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+            }
+            // body: queryString
+        })
+            .then(response => response.json())
+            .then(data => {this.setState(prevState => ({status: data.errorCode,massage: data.errorMassage}))})
+            .then(data=>{
+                console.log(queryString);
+
+                if(this.state.status !== 200 && this.state.status)
+                    window.alert(this.state.massage);
+                else {
+                    //window.alert(this.state.massage);
+                    ReactDOM.render(<Credit />,document.getElementById("root"));
+                }
+            });
+    }
     render() {
         return (
             <div className='whole'>
@@ -27,7 +59,7 @@ export class SignIn extends React.Component{
                 <div className="container-fluid main-content "  lang="fa">
                     <div className="col-sm-6 sighnup-div white-back" lang="fa" id="info-box">
                         <div className="form-div" dir="rtl" lang="fa" id="form">فرم ورود</div>
-                            <form className="col-sm-10 signup-form" action="" dir="rtl" lang="fa" onSubmit={this.signIn}>
+                            <form className="col-sm-10 signup-form" action="" dir="rtl" lang="fa" onSubmit={(e) => {this.handleEnterUser(e)}}>
                                 <EntryInput htmlFor="email" label="پست الکترونیک:" inputType="email" placeHolder="پست الکترونیک"/>
                                 <EntryInput htmlFor="pwd" label="رمز عبور:" inputType="password" placeHolder="رمز عبور"/>
                                 <button type="submit" className="col-sm-12 btn btn-default sub-btn dark-green" dir="rtl" lang="fa" >ورود</button>
