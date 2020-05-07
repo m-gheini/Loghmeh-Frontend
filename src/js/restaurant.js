@@ -207,6 +207,7 @@ export class Cart extends React.Component{
             method: 'POST' ,
             headers: {
                 'content-length' : 0,
+                'Authorization': localStorage.getItem("jwt"),
                 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
             },
         })
