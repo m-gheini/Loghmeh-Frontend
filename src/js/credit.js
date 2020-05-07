@@ -31,7 +31,8 @@ export class Credit extends React.Component{
         var queryString = Object.keys(params).map(function(key){
             return key + '=' + params[key]
         }).join('&');
-        fetch('http://localhost:8080/users/1?'+queryString,{
+        console.log(localStorage)
+        fetch('http://localhost:8080/user?'+queryString,{
             method: 'PUT' ,
             headers: {
                 'Authorization': localStorage.getItem("jwt"),
@@ -43,8 +44,12 @@ export class Credit extends React.Component{
             .then(response => response.json())
             .then(data => {this.setState(prevState => ({status: data.errorCode,massage: data.errorMassage}))})
             .then(data=>{
-                if(this.state.status !== 200 && this.state.status!==201 && this.state.status)
-                    window.alert(this.state.massage)
+                if(this.state.status !== 200 && this.state.status!==201 && this.state.status) {
+                    window.alert(this.state.massage);
+                    if(this.state.status===300){
+                        ReactDOM.render(<SignIn />,document.getElementById("root"));
+                    }
+                }
             });
 
     }
@@ -128,17 +133,22 @@ export class UserInfo extends React.Component{
 
     componentDidMount() {
         this.setState(prevState => ({loading : true}));
-                fetch('http://localhost:8080/users/1')
-                    .then(resp => resp.json())
-                    .then(data =>
-                        this.setState(
-                            prevState => ({
-                                phoneNumber : data.phoneNumber,
-                                name : data.name,
-                                familyName : data.familyName,
-                                email : data.email,
-                                credit : data.credit,
-                                loading: false})));
+        fetch('http://localhost:8080/user',{
+            method: 'GET' ,
+            headers: {
+                'Authorization': localStorage.getItem("jwt")
+            }
+        })
+            .then(resp => resp.json())
+            .then(data =>
+                this.setState(
+                    prevState => ({
+                        phoneNumber : data.phoneNumber,
+                        name : data.name,
+                        familyName : data.familyName,
+                        email : data.email,
+                        credit : data.credit,
+                        loading: false})));
     }
 }
 export class Choices extends React.Component{

@@ -4,7 +4,7 @@ import {SignIn} from './js/signIn';
 import '../src/css/normalize.css'
 import '../src/css/index.css';
 import '../src/font/flaticon.css'
-
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import * as serviceWorker from './serviceWorker';
 import './index.css';
 // import App from './App';
@@ -13,6 +13,15 @@ ReactDOM.render(
     <SignIn />,
     document.getElementById('root')
 );
+// ReactDOM.render(
+//     <Router>
+//         <Route url="/login">
+//             <SignIn/>
+//         </Route>
+//     </Router>
+//     ,
+//     document.getElementById('root')
+// );
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

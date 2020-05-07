@@ -7,6 +7,7 @@ import {Credit} from "./credit";
 import {Home} from "./home";
 import {Footer} from "./footer";
 import {Menu} from "./header";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 export class SignIn extends React.Component{
     constructor(props) {
@@ -15,7 +16,7 @@ export class SignIn extends React.Component{
         this.signIn = this.signIn.bind(this);
     }
     goToSignUp(){
-        ReactDOM.render(<SignUp />,document.getElementById("root"));
+        ReactDOM.render(<SignUp/> ,document.getElementById("root"));
     }
     signIn(){
         ReactDOM.render(<Credit /> ,document.getElementById("root"));
@@ -44,8 +45,9 @@ export class SignIn extends React.Component{
             .then(data=>{
                 console.log(queryString);
 
-                if(this.state.status !== 200 && this.state.status)
+                if(this.state.status !== 200 && this.state.status) {
                     window.alert(this.state.massage);
+                }
                 else {
                     localStorage.setItem("jwt",this.state.massage);
                     console.log(localStorage);
@@ -56,28 +58,35 @@ export class SignIn extends React.Component{
     }
     render() {
         return (
-            <div className='whole'>
-                <Menu location="entry"/>
-                <div className="container-fluid main-content "  lang="fa">
-                    <div className="col-sm-6 sighnup-div white-back" lang="fa" id="info-box">
-                        <div className="form-div" dir="rtl" lang="fa" id="form">فرم ورود</div>
-                            <form className="col-sm-10 signup-form" action="" dir="rtl" lang="fa" onSubmit={(e) => {this.handleEnterUser(e)}}>
-                                <EntryInput htmlFor="email" label="پست الکترونیک:" inputType="email" placeHolder="پست الکترونیک"/>
-                                <EntryInput htmlFor="pwd" label="رمز عبور:" inputType="password" placeHolder="رمز عبور"/>
-                                <button type="submit" className="col-sm-12 btn btn-default sub-btn dark-green" dir="rtl" lang="fa" >ورود</button>
-                                <div className="google-signin g-signin2"/>
-                                <div className="no-account" dir="rtl" lang="fa">
-                                    <br/>
-                                    <br/>
-                                    کاربر جدید هستید؟
-                                    <button type="submit"  className="new-user" onClick={this.goToSignUp}>ثبت نام کنید.</button>
+            // <Router>
+            //     <Switch>
+            //         <Route exact path="/login">
+                        <div className='whole'>
+                            <Menu location="entry"/>
+                            <div className="container-fluid main-content "  lang="fa">
+                                <div className="col-sm-6 sighnup-div white-back" lang="fa" id="info-box">
+                                    <div className="form-div" dir="rtl" lang="fa" id="form">فرم ورود</div>
+                                    <form className="col-sm-10 signup-form" action="" dir="rtl" lang="fa" onSubmit={(e) => {this.handleEnterUser(e)}}>
+                                        <EntryInput htmlFor="email" label="پست الکترونیک:" inputType="email" placeHolder="پست الکترونیک"/>
+                                        <EntryInput htmlFor="pwd" label="رمز عبور:" inputType="password" placeHolder="رمز عبور"/>
+                                        <button type="submit" className="col-sm-12 btn btn-default sub-btn dark-green" dir="rtl" lang="fa" >ورود</button>
+                                        <div className="google-signin g-signin2"/>
+                                        <div className="no-account" dir="rtl" lang="fa">
+                                            <br/>
+                                            <br/>
+                                            کاربر جدید هستید؟
+                                            <button type="submit"  className="new-user" onClick={this.goToSignUp}>ثبت نام کنید.</button>
+                                        </div>
+                                    </form >
                                 </div>
-                            </form >
-                    </div>
-                </div>
-                <Footer/>
-                {/*<Loader/>*/}
-            </div>
+                            </div>
+                            <Footer/>
+                            {/*<Loader/>*/}
+                        </div>
+
+            //         </Route>
+            //     </Switch>
+            // </Router>
         );
     }
 }
