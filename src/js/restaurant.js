@@ -56,7 +56,12 @@ export class Restaurant extends React.Component{
     }
 
     fetchCart() {
-        fetch('http://localhost:8080/users/1/cart')
+        fetch('http://localhost:8080/user/cart',{
+            method: 'GET' ,
+            headers: {
+                'Authorization': localStorage.getItem("jwt")
+            }
+        })
             .then(resp => resp.json())
             .then(data =>
                 this.setState(
@@ -67,6 +72,22 @@ export class Restaurant extends React.Component{
                         saleFoodsInCartCount : data.numberOfSaleFood
 
                     })));
+        // fetch('http://localhost:8080/user/cart'),{
+        //     method: 'GET' ,
+        //     headers: {
+        //         'Authorization': localStorage.getItem("jwt")
+        //     }
+        // })
+        //     .then(resp => resp.json())
+        //     .then(data =>
+        //         this.setState(
+        //             prevState => ({
+        //                 foodsInCart : data.foods,
+        //                 foodsInCartCount : data.numberOfFood,
+        //                 saleFoodsInCart : data.saleFoods,
+        //                 saleFoodsInCartCount : data.numberOfSaleFood
+        //
+        //             })));
     }
 
     render() {
@@ -231,13 +252,26 @@ export class Cart extends React.Component{
     }
 
     componentDidMount() {
-        fetch('http://localhost:8080/users/1/cart')
+        fetch('http://localhost:8080/user/cart',{
+            method: 'GET' ,
+            headers: {
+                'Authorization': localStorage.getItem("jwt")
+            }
+        })
             .then(resp => resp.json())
             .then(data =>
                 this.setState(
                     prevState => ({
                         foods : data.foods
                     })));
+
+        // fetch('http://localhost:8080/users/1/cart')
+        //     .then(resp => resp.json())
+        //     .then(data =>
+        //         this.setState(
+        //             prevState => ({
+        //                 foods : data.foods
+        //             })));
     }
 }
 export class FoodInCart extends React.Component{
