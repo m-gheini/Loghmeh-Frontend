@@ -6,6 +6,7 @@ import {Home} from "./home";
 import {SignIn} from "./signIn";
 import {Footer} from "./footer";
 import {Menu} from "./header";
+import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
 
 export class Orders extends React.Component{
     constructor(props) {
@@ -70,18 +71,27 @@ export class Orders extends React.Component{
     }
     render() {
         return (
-            <div className="whole">
-                <Menu location="userInfo"/>
-                <UserInfo/>
-                <div className="container-fluid new-content" lang="fa">
-                    <div className="container-fluid col-sm-10 box white-back" lang="fa" >
-                        <Choices location="orders"/>
-                        <br className="clear"/>
-                        <AllOrders orders={this.state.orders}/>
-                    </div>
-                </div>
-                <Footer/>
-            </div>
+            <Router>
+                <Switch>
+                    <Route exact path={"/login"}><SignIn/></Route>
+                    <Route exact path={"/home"}><Home/></Route>
+                    <Route exact path={"/userCredit"}><Credit/></Route>
+                    <Route exact path={"/userOrder"}>
+                        <div className="whole">
+                            <Menu location="userInfo"/>
+                            <UserInfo/>
+                            <div className="container-fluid new-content" lang="fa">
+                                <div className="container-fluid col-sm-10 box white-back" lang="fa" >
+                                    <Choices location="orders"/>
+                                    <br className="clear"/>
+                                    <AllOrders orders={this.state.orders}/>
+                                </div>
+                            </div>
+                            <Footer/>
+                        </div>
+                    </Route>
+                </Switch>
+            </Router>
         );
     }
 
