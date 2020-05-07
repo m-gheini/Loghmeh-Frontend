@@ -20,14 +20,28 @@ export class Orders extends React.Component{
         }
     }
     fetchOrders(){
-        fetch('http://localhost:8080/users/1/orders')
+        fetch('http://localhost:8080/user/orders',{
+            method: 'GET' ,
+            headers: {
+                'Authorization': localStorage.getItem("jwt")
+            }
+        })
             .then(resp => resp.json())
             .then(data =>
                 this.setState(
                     prevState => ({
-                        orders : data
-                    })));
+                                orders : data
+                            })));
     }
+
+    // fetch('http://localhost:8080/user/orders')
+    //         .then(resp => resp.json())
+    //         .then(data =>
+    //             this.setState(
+    //                 prevState => ({
+    //                     orders : data
+    //                 })));
+    // }
 
     componentDidMount() {
         this.fetchOrders();
