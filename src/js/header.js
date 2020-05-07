@@ -54,7 +54,7 @@ export class Menu extends React.Component{
                 {this.props.location==="home" &&
                 <div className="container-fluid navbar-content" lang="fa">
                     <ul className="nav navbar-nav" lang="fa">
-                        <li className="list-item " dir="rtl"><button type="button" className="exit without-style" onClick={this.logOut} lang="fa">خروج</button>
+                        <li className="list-item " dir="rtl"><Link to={"/login"}><button type="button" className="exit without-style" onClick={this.logOut} lang="fa">خروج</button></Link>
                         </li>
                         <li className="list-item " dir="rtl"><a className="account" href="#" lang="fa">حساب کاربری</a></li>
                         <li className="list-item" dir="rtl">

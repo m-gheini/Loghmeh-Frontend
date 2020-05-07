@@ -10,6 +10,7 @@ import {Footer} from "./footer";
 import {Menu} from "./header";
 import {AllOrders} from "./orders";
 import {Loader} from "./loading";
+import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
 
 export class Home extends React.Component{
     constructor(props) {
@@ -81,49 +82,57 @@ export class Home extends React.Component{
     }
     render() {
         return (
-            <div className="whole">
-                { this.state.loading ? <Loader/> :
-                    <div className="whole">
-                <Menu location="home"/>
-                <div className = "overlay" dir = "rtl" lang = "fa" >
-                    <ul className = "nav top restaurant-logo-top" lang = "fa" >
-                        <li className = "list-item" > <img className = "img-responsive homelogo" src = {logo} alt = "Loghmeh Logo" lang = "fa" /> </li>
-                            <li className="current-restaurant-name white-font" lang="fa">اولین و بزرگ ترین وب سایت سفارش آنلاین غذا در دانشگاه تهران</li>
-                            <div className = "white-back search" lang = "fa" >
-                                <div className = "inner" lang = "fa" >
-                                    <form className = "form-inline" dir = "rtl" lang = "fa" >
+            <Router>
+                <Switch>
+                    <Route exact path={"/login"}><SignIn/></Route>
+                    <Route exact path={"/restaurantInfo"}><SignIn/></Route>
+                    <Route exact path={"/home"}>
+                        <div className="whole">
+                            { this.state.loading ? <Loader/> :
+                                <div className="whole">
+                                    <Menu location="home"/>
+                                    <div className = "overlay" dir = "rtl" lang = "fa" >
+                                        <ul className = "nav top restaurant-logo-top" lang = "fa" >
+                                            <li className = "list-item" > <img className = "img-responsive homelogo" src = {logo} alt = "Loghmeh Logo" lang = "fa" /> </li>
+                                            <li className="current-restaurant-name white-font" lang="fa">اولین و بزرگ ترین وب سایت سفارش آنلاین غذا در دانشگاه تهران</li>
+                                            <div className = "white-back search" lang = "fa" >
+                                                <div className = "inner" lang = "fa" >
+                                                    <form className = "form-inline" dir = "rtl" lang = "fa" >
                                         <span className = "form-input" dir = "rtl" lang = "fa" >
                                             <input type = "text" className = "sol-sm-4 form-control search-place gray-back" placeholder = "نام غذا" dir = "rtl" lang = "fa" />
                                                 <input type = "text" className = " sol-sm-4 form-control search-place gray-back" placeholder = "نام رستوران" dir = "rtl" lang = "fa" />
                                         </span>
-                                        <span className="form-btn" dir="rtl" lang="fa">
+                                                        <span className="form-btn" dir="rtl" lang="fa">
                                             <button type="submit" className=" sol-sm-4 btn search-btn submit-btn search-place black-font" dir="rtl" lang="fa">جست و جو</button>
                                         </span>
-                                    </form>
-                                </div>
-                            </div>
-                    </ul>
-                </div>
-                <div className="container-fluid content" lang="fa" dir="rtl">
-                    <div className="party-header contain-menu">
-                        <p className="menu-header dark-green" lang="fa">جشن غذا!</p>
-                    </div>
-                    <div className="white-back timer" lang="fa">
-                        <div  className="inner" lang="fa">
-                            <p className="dark-green text" lang="fa">زمان باقی مانده:{Math.floor((this.state.remainingTime) / 60000)}:{((this.state.remainingTime) % 60000)/1000}</p>
-                        </div>
-                    </div>
-                    <AllSaleFoods saleFoods={this.state.saleFoods}/>
-                    <div className="contain-menu">
-                        <p className="menu-header dark-green" lang="fa">رستوران ها</p>
-                    </div>
-                    <AllRestaurants restaurants={this.state.restaurants}/>
-                </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </ul>
+                                    </div>
+                                    <div className="container-fluid content" lang="fa" dir="rtl">
+                                        <div className="party-header contain-menu">
+                                            <p className="menu-header dark-green" lang="fa">جشن غذا!</p>
+                                        </div>
+                                        <div className="white-back timer" lang="fa">
+                                            <div  className="inner" lang="fa">
+                                                <p className="dark-green text" lang="fa">زمان باقی مانده:{Math.floor((this.state.remainingTime) / 60000)}:{((this.state.remainingTime) % 60000)/1000}</p>
+                                            </div>
+                                        </div>
+                                        <AllSaleFoods saleFoods={this.state.saleFoods}/>
+                                        <div className="contain-menu">
+                                            <p className="menu-header dark-green" lang="fa">رستوران ها</p>
+                                        </div>
+                                        <AllRestaurants restaurants={this.state.restaurants}/>
+                                    </div>
 
-                <Footer/>
-                    </div>
-                }
-            </div>
+                                    <Footer/>
+                                </div>
+                            }
+                        </div>
+                    </Route>
+                </Switch>
+            </Router>
         );
     }
 
@@ -212,7 +221,9 @@ export class RestaurantInfo extends React.Component {
                     <span className="restaurant-food-name black-font">{this.props.name}</span>
                 </span>
                 <br/>
+                <Link to={"/restaurantInfo"}>
                 <button type="button" className="btn done black-font without-shadow" dir="rtl" lang="fa" onClick={this.goToSpecificRestaurant}>نمایش منو</button>
+                </Link>
             </div>
         );
     }
