@@ -4,13 +4,30 @@ import {SignIn} from './js/signIn';
 import '../src/css/normalize.css'
 import '../src/css/index.css';
 import '../src/font/flaticon.css'
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import * as serviceWorker from './serviceWorker';
 import './index.css';
+import {SignUp} from "./js/signUp";
+import {Home} from "./js/home";
+import {Orders} from "./js/orders";
+import {Credit} from "./js/credit";
+import {Restaurant} from "./js/restaurant";
 // import App from './App';
 
 ReactDOM.render(
-    <SignIn />,
+    <Router>
+    <Switch >
+        <Route path="/login"><SignIn /></Route>
+        <Route path="/register"><SignUp /></Route>
+        <Route path="/home"><Home /></Route>
+        <Route path="/userOrders"><Orders /></Route>
+        <Route path="/userCredit"><Credit /></Route>
+        <Route path="/restaurantInfo"><Restaurant /></Route>
+
+        <SignIn />
+    </Switch>
+    </Router>
+    ,
     document.getElementById('root')
 );
 // ReactDOM.render(

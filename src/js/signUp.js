@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
 import logo from '../Assets/LOGO.png';
 import {EntryInput, SignIn} from "./signIn";
 import {Menu} from "./header";
@@ -65,9 +65,10 @@ export class SignUp extends React.Component{
     }
     render(){
         return(
-            // <Router>
-            //     <Switch>
-            //         <Route exact path="/register"  >
+            <Router>
+                <Switch>
+                    <Route exact path="/login"><SignIn/></Route>
+                    <Route exact path="/register"  >
                         <div className='whole'>
                             <Menu location="entry"/>
                             <div className="container-fluid main-content "  lang="fa">
@@ -86,7 +87,9 @@ export class SignUp extends React.Component{
                                             <br/>
                                             <br/>
                                             ثبت نام کرده اید؟
+                                            <Link to={'/login'}>
                                             <button type="button"  className="new-user" onClick={(e) => {this.goToSignIn(e)}}>وارد شوید.</button>
+                                            </Link>
                                         </div>
                                     </form>
                                 </div>
@@ -95,9 +98,9 @@ export class SignUp extends React.Component{
 
                         </div>
 
-            //         </Route>
-            //     </Switch>
-            // </Router>
+                    </Route>
+                </Switch>
+            </Router>
 
     );
     }

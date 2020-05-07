@@ -7,7 +7,7 @@ import {Credit} from "./credit";
 import {Home} from "./home";
 import {Footer} from "./footer";
 import {Menu} from "./header";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 export class SignIn extends React.Component{
     constructor(props) {
@@ -58,9 +58,11 @@ export class SignIn extends React.Component{
     }
     render() {
         return (
-            // <Router>
-            //     <Switch>
-            //         <Route exact path="/login">
+            <Router>
+                <Switch>
+                    <Route path="/userCredit"><Credit /></Route>
+                    <Route path="/register"><SignUp /></Route>
+                    <Route exact path="/login">
                         <div className='whole'>
                             <Menu location="entry"/>
                             <div className="container-fluid main-content "  lang="fa">
@@ -69,13 +71,15 @@ export class SignIn extends React.Component{
                                     <form className="col-sm-10 signup-form" action="" dir="rtl" lang="fa" onSubmit={(e) => {this.handleEnterUser(e)}}>
                                         <EntryInput htmlFor="email" label="پست الکترونیک:" inputType="email" placeHolder="پست الکترونیک"/>
                                         <EntryInput htmlFor="pwd" label="رمز عبور:" inputType="password" placeHolder="رمز عبور"/>
+                                        <Link to={'/userCredit'}>
                                         <button type="submit" className="col-sm-12 btn btn-default sub-btn dark-green" dir="rtl" lang="fa" >ورود</button>
+                                        </Link>
                                         <div className="google-signin g-signin2"/>
                                         <div className="no-account" dir="rtl" lang="fa">
                                             <br/>
                                             <br/>
                                             کاربر جدید هستید؟
-                                            <button type="submit"  className="new-user" onClick={this.goToSignUp}>ثبت نام کنید.</button>
+                                            <Link to={'/register'} className="new-user">ثبت نام کنید.</Link>
                                         </div>
                                     </form >
                                 </div>
@@ -84,9 +88,9 @@ export class SignIn extends React.Component{
                             {/*<Loader/>*/}
                         </div>
 
-            //         </Route>
-            //     </Switch>
-            // </Router>
+                     </Route>
+                 </Switch>
+             </Router>
         );
     }
 }
