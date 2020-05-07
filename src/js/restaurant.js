@@ -203,7 +203,7 @@ export class Cart extends React.Component{
 
     }
     finalize(){
-        fetch('http://localhost:8080/users/1/cart',{
+        fetch('http://localhost:8080/users/cart',{
             method: 'POST' ,
             headers: {
                 'content-length' : 0,
