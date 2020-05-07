@@ -1,7 +1,10 @@
-*{
+:not(span){
     font-family: Vazir;
     color: #f7fff7;
     font-weight: lighter;
+}
+span{
+    color: #757575;
 }
 #root{
     height: 100%;
@@ -395,6 +398,12 @@ input, .submit-btn{
     top:50%;
     transform: translate(-50%,-50%);
     left: 50%;
+}
+.google-signin{
+    color: black;
+    right: 50%;
+    left: 50%;
+    padding: 8% 40% 0 60%;
 }
 .dark-green{
     color: #1a535c

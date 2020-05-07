@@ -100,7 +100,7 @@ export class UserInfo extends React.Component{
             <div className="container-fluid user-info pink-back" dir="rtl" lang="fa">
                 { this.state.loading ? <Loader/> :
                     <div>
-                <div className="col-sm-6 important" dir="rtl" lang="fa"><span className="flaticon-account " lang="fa"/>
+                <div className="col-sm-6 important" dir="rtl" lang="fa"><span className="white-font flaticon-account " lang="fa"/>
                     {this.state.name} {this.state.familyName}
                 </div>
                 <div className="col-sm-6 info" dir="rtl" lang="fa">

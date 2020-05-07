@@ -42,7 +42,7 @@ export class Menu extends React.Component{
                         <li className="list-item" dir="rtl" lang="fa">
                             <a href="#" lang="fa">
                                 <i className="flaticon-smart-cart " lang="fa"/>
-                                <span className="dot" lang="fa">۳</span>
+                                <span className="white-font dot" lang="fa">۳</span>
                             </a>
                         </li>
                     </ul>
@@ -57,7 +57,7 @@ export class Menu extends React.Component{
                         <li className="list-item" dir="rtl">
                             <a href="#">
                                 <i className="flaticon-smart-cart "/>
-                                <span className="dot" lang="fa">۳</span>
+                                <span className="white-font dot" lang="fa">۳</span>
                             </a>
                         </li>
                     </ul>
@@ -78,7 +78,7 @@ export class Menu extends React.Component{
                         <li className="list-item" dir="rtl" lang="fa">
                             <a href="#" lang="fa">
                                 <i className="flaticon-smart-cart " lang="fa"/>
-                                <span className="dot" lang="fa">۳</span>
+                                <span className="white-font dot" lang="fa">۳</span>
                             </a>
                         </li>
                     </ul>

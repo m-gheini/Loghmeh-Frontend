@@ -65,6 +65,7 @@ export class SignIn extends React.Component{
                                 <EntryInput htmlFor="email" label="پست الکترونیک:" inputType="email" placeHolder="پست الکترونیک"/>
                                 <EntryInput htmlFor="pwd" label="رمز عبور:" inputType="password" placeHolder="رمز عبور"/>
                                 <button type="submit" className="col-sm-12 btn btn-default sub-btn dark-green" dir="rtl" lang="fa" >ورود</button>
+                                <div className="google-signin g-signin2"/>
                                 <div className="no-account" dir="rtl" lang="fa">
                                     <br/>
                                     <br/>
