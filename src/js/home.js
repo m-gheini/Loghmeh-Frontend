@@ -26,7 +26,9 @@ export class Home extends React.Component{
             remainingTime : 1800000,
             restaurants : [],
             saleFoods : [],
-            redirect : false
+            redirect : false,
+            jwtRedirect : false,
+            requestFailed :false
         }
     }
     fetchRestaurants(){
@@ -37,7 +39,13 @@ export class Home extends React.Component{
                     prevState => ({
                         restaurants : data,
                         loading : false
-                    })));
+                    })))
+            .catch((error) => {
+                console.log('error: ' + error);
+                this.setState({ requestFailed: true });
+                window.alert("you do not have access to this page please login first");
+                this.forceUpdate();
+            });
     }
     setTime(){
         fetch('http://localhost:8080/foodPartyTime')
@@ -46,7 +54,13 @@ export class Home extends React.Component{
                 this.setState(
                     prevState => ({
                         remainingTime : data.remainingTime
-                    })));
+                    })))
+            .catch((error) => {
+                console.log('error: ' + error);
+                this.setState({ requestFailed: true });
+                window.alert("you do not have access to this page please login first");
+                this.forceUpdate();
+            });
     }
     fetchSaleRestaurants(){
         fetch('http://localhost:8080/saleFoods')
@@ -55,7 +69,14 @@ export class Home extends React.Component{
                 this.setState(
                     prevState => ({
                         saleFoods : data
-                    })));
+                    })))
+            .catch((error) => {
+                console.log('error: ' + error);
+                this.setState({ requestFailed: true });
+                window.alert("you do not have access to this page please login first");
+                this.forceUpdate();
+            });
+
     }
 
     componentDidMount() {
@@ -88,6 +109,9 @@ export class Home extends React.Component{
         if(this.state.redirect){
             console.log("redirect finally ",this.state.redirect);
             return <Redirect to={"/restaurantInfo"}/>
+        }
+        if(this.state.requestFailed){
+            return <Redirect to={"/login"}/>
         }
         else{
         return (
