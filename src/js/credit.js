@@ -73,6 +73,8 @@ export class Credit extends React.Component{
         .catch((error) => {
             console.log('error: ' + error);
             this.setState({ requestFailed: true });
+            window.alert("you do not have access to this page please login first");
+            this.forceUpdate();
         });
 
     }
@@ -185,11 +187,19 @@ export class UserInfo extends React.Component{
                         familyName : data.familyName,
                         email : data.email,
                         credit : data.credit,
-                        loading: false})));
+                        loading: false})))
+    .catch((error) => {
+            console.log('error: ' + error);
+            this.setState({ requestFailed: true });
+            window.alert("you do not have access to this page please login first");
+            //TODO redirect
+        });
+
         console.log(this.state.phoneNumber);
         console.log(this.state.name);
         console.log(this.state.email);
         console.log(this.state.credit);
+
 
     }
 }
