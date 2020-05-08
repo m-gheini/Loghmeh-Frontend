@@ -11,7 +11,7 @@ import {SignIn} from "./signIn";
 import {Footer} from "./footer";
 import {Menu} from "./header";
 import {Loader} from "./loading";
-import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import {BrowserRouter as Router, Redirect, Route, Switch} from "react-router-dom";
 
 export class Restaurant extends React.Component{
     constructor(props) {
@@ -26,8 +26,8 @@ export class Restaurant extends React.Component{
             foodsInCart : [],
             foodsInCartCount : [],
             saleFoodsInCart : [],
-            saleFoodsInCartCount : []
-
+            saleFoodsInCartCount : [],
+            redirect :false
         }
 
     }
@@ -50,15 +50,17 @@ export class Restaurant extends React.Component{
     }
 
     goToHome(){
-        ReactDOM.render(
-
-            <Router>
-            <Switch >
-            {/*<Redirect to="/restaurantInfo"/>*/}
-                <Home />
-            </Switch>
-            </Router>
-            ,document.getElementById("root"));
+        this.state.redirect = true;
+        this.forceUpdate();
+        // ReactDOM.render(
+        //
+        //     <Router>
+        //     <Switch >
+        //     {/*<Redirect to="/restaurantInfo"/>*/}
+        //         <Home />
+        //     </Switch>
+        //     </Router>
+        //     ,document.getElementById("root"));
     }
     logOut(){
         ReactDOM.render(<SignIn/>,document.getElementById("root"));
@@ -101,39 +103,48 @@ export class Restaurant extends React.Component{
 
     render() {
         console.log("IN RES!!!")
-        return (
-            // <Router>
-            //     <Switch>
-            //         <Route exact path="/restaurantInfo">
-            <div className="whole">
-                { this.state.loading ? <Loader/> :
-                    <div className="whole">
-                <Menu location="restaurant"/>
-                <div className="container-fluid top pink-back" dir="rtl" lang="fa">
-                    <ul className="nav top restaurant-logo-top" lang="fa">
-                        <li className="list-item">
-                            <img className="img-responsive restaurant-logo" src={this.props.restaurant.logo} alt="Loghmeh Logo" lang="fa"/>
-                        </li>
-                        <li className="current-restaurant-name black-font" lang="fa">{this.props.restaurant.name}</li>
-                    </ul>
-                </div>
-                <div className="container-fluid content" lang="fa">
-                    <Cart foods={this.state.foodsInCart} foodCount={this.state.foodsInCartCount} saleFoods={this.state.saleFoodsInCart} saleFoodCount={this.state.saleFoodsInCartCount}/>
-                    <div className="menu">
-                        <div className="contain-menu">
-                            <p className="menu-header dark-green" lang="fa">منوی غذا </p>
+        if(this.state.redirect){
+            return <Redirect to={"/home"}/>
+        }
+        else {
+            return (
+                // <Router>
+                //     <Switch>
+                //         <Route exact path="/restaurantInfo">
+                <div className="whole">
+                    {this.state.loading ? <Loader/> :
+                        <div className="whole">
+                            <Menu location="restaurant"/>
+                            <div className="container-fluid top pink-back" dir="rtl" lang="fa">
+                                <ul className="nav top restaurant-logo-top" lang="fa">
+                                    <li className="list-item">
+                                        <img className="img-responsive restaurant-logo" src={this.props.restaurant.logo}
+                                             alt="Loghmeh Logo" lang="fa"/>
+                                    </li>
+                                    <li className="current-restaurant-name black-font"
+                                        lang="fa">{this.props.restaurant.name}</li>
+                                </ul>
+                            </div>
+                            <div className="container-fluid content" lang="fa">
+                                <Cart foods={this.state.foodsInCart} foodCount={this.state.foodsInCartCount}
+                                      saleFoods={this.state.saleFoodsInCart}
+                                      saleFoodCount={this.state.saleFoodsInCartCount}/>
+                                <div className="menu">
+                                    <div className="contain-menu">
+                                        <p className="menu-header dark-green" lang="fa">منوی غذا </p>
+                                    </div>
+                                    <AllFoods foods={this.state.foods}/>
+                                </div>
+                            </div>
+                            <Footer/>
                         </div>
-                        <AllFoods foods={this.state.foods}/>
-                    </div>
+                    }
                 </div>
-                <Footer/>
-                    </div>
-                }
-            </div>
-            //          </Route>
-            //      </Switch>
-            // </Router>
-        );
+                //          </Route>
+                //      </Switch>
+                // </Router>
+            );
+        }
     }
 }
 export class AllFoods extends React.Component{
