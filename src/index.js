@@ -4,7 +4,7 @@ import {SignIn} from './js/signIn';
 import '../src/css/normalize.css'
 import '../src/css/index.css';
 import '../src/font/flaticon.css'
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch, Link, Redirect} from "react-router-dom";
 import * as serviceWorker from './serviceWorker';
 import './index.css';
 import {SignUp} from "./js/signUp";
@@ -23,8 +23,9 @@ ReactDOM.render(
         <Route path="/userOrders"><Orders /></Route>
         <Route path="/userCredit"><Credit /></Route>
         <Route path="/restaurantInfo"><Restaurant /></Route>
+        <Redirect to="/login"><SignIn /></Redirect>
+        <SignIn/>
 
-        <SignIn />
     </Switch>
     </Router>
     ,

@@ -43,7 +43,10 @@ export class Credit extends React.Component{
             },
             body: queryString
         })
-            .then(response => response.json())
+            .then(response => {
+                console.log(response.ok);
+                if(!response.ok) throw new Error(response.status);
+                else return response.json();})
             .then(data => {this.setState(prevState => ({status: data.errorCode,massage: data.errorMassage}))})
             .then(data=>{
                 if(this.state.status !== 200 && this.state.status!==201 && this.state.status) {
@@ -52,7 +55,11 @@ export class Credit extends React.Component{
                         ReactDOM.render(<SignIn />,document.getElementById("root"));
                     }
                 }
-            });
+            })
+        .catch((error) => {
+            console.log('error: ' + error);
+            this.setState({ requestFailed: true });
+        });
 
     }
 
@@ -145,6 +152,7 @@ export class UserInfo extends React.Component{
 
 
     componentDidMount() {
+        console.log("creditGet");
         this.setState(prevState => ({loading : true}));
         fetch('http://localhost:8080/user',{
             method: 'GET' ,
@@ -162,6 +170,11 @@ export class UserInfo extends React.Component{
                         email : data.email,
                         credit : data.credit,
                         loading: false})));
+        console.log(this.state.phoneNumber);
+        console.log(this.state.name);
+        console.log(this.state.email);
+        console.log(this.state.credit);
+
     }
 }
 export class Choices extends React.Component{
