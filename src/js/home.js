@@ -8,9 +8,11 @@ import { SignIn} from "./signIn";
 import {Restaurant} from "./restaurant";
 import {Footer} from "./footer";
 import {Menu} from "./header";
-import {AllOrders} from "./orders";
+import {AllOrders, Orders} from "./orders";
 import {Loader} from "./loading";
-import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
+import {BrowserRouter as Router, Link, Redirect, Route, Switch} from "react-router-dom";
+import {SignUp} from "./signUp";
+import {Credit} from "./credit";
 
 export class Home extends React.Component{
     constructor(props) {
@@ -23,7 +25,8 @@ export class Home extends React.Component{
             loading : true,
             remainingTime : 1800000,
             restaurants : [],
-            saleFoods : []
+            saleFoods : [],
+            redirect : false
         }
     }
     fetchRestaurants(){
@@ -77,10 +80,16 @@ export class Home extends React.Component{
         ReactDOM.render(<SignIn/>,document.getElementById("root"));
     }
     goToSpecificRestaurant(){
-        ReactDOM.render(<Restaurant/>,document.getElementById("root"));
-
+        //ReactDOM.render(<Restaurant/>,document.getElementById("root"));
+        this.setState(prevState => ({redirect: true}));
+        ReactDOM.render(<Home/>,document.getElementById("root"));
     }
     render() {
+        if(this.state.redirect){
+            console.log("redirect finally ",this.state.redirect);
+            return <Redirect to={"/restaurantInfo"}/>
+        }
+        else{
         return (
             <Router>
                 <Switch>
@@ -132,7 +141,7 @@ export class Home extends React.Component{
                     </Route>
                 </Switch>
             </Router>
-        );
+        );}
     }
 
 }
@@ -207,8 +216,18 @@ export class RestaurantInfo extends React.Component {
 
     }
     goToSpecificRestaurant(){
-        ReactDOM.render(<Restaurant restaurant={this.props.restaurant}/>,document.getElementById("root"));
-
+        console.log("SPECIFIC RESTAURANT!!!");
+        // ReactDOM.render(<Restaurant restaurant={this.props.restaurant}/>,document.getElementById("root"));
+        ReactDOM.render(
+        <Router>
+            <Switch >
+                {/*<Redirect to="/restaurantInfo"/>*/}
+                <Restaurant restaurant={this.props.restaurant}/>
+            </Switch>
+        </Router>,
+        document.getElementById('root')
+        );
+       console.log("AFTER!!");
     }
 
     render() {

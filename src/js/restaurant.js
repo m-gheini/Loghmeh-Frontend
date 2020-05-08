@@ -11,6 +11,7 @@ import {SignIn} from "./signIn";
 import {Footer} from "./footer";
 import {Menu} from "./header";
 import {Loader} from "./loading";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 
 export class Restaurant extends React.Component{
     constructor(props) {
@@ -49,7 +50,15 @@ export class Restaurant extends React.Component{
     }
 
     goToHome(){
-        ReactDOM.render(<Home />,document.getElementById("root"));
+        ReactDOM.render(
+
+            <Router>
+            <Switch >
+            {/*<Redirect to="/restaurantInfo"/>*/}
+                <Home />
+            </Switch>
+            </Router>
+            ,document.getElementById("root"));
     }
     logOut(){
         ReactDOM.render(<SignIn/>,document.getElementById("root"));
@@ -91,7 +100,11 @@ export class Restaurant extends React.Component{
     }
 
     render() {
+        console.log("IN RES!!!")
         return (
+            // <Router>
+            //     <Switch>
+            //         <Route exact path="/restaurantInfo">
             <div className="whole">
                 { this.state.loading ? <Loader/> :
                     <div className="whole">
@@ -117,6 +130,9 @@ export class Restaurant extends React.Component{
                     </div>
                 }
             </div>
+            //          </Route>
+            //      </Switch>
+            // </Router>
         );
     }
 }

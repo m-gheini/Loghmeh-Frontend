@@ -20,6 +20,7 @@ ReactDOM.render(
         <Route path="/login"><SignIn /></Route>
         <Route path="/register"><SignUp /></Route>
         <Route path="/home"><Home /></Route>
+        {/*<Route path="/restaurantInfo"><Restaurant /></Route>*/}
         <Route path="/userOrders"><Orders /></Route>
         <Route path="/userCredit"><Credit /></Route>
         <Redirect to="/login"><SignIn /></Redirect>

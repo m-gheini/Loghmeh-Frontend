@@ -80,31 +80,13 @@ export class SignIn extends React.Component{
                 if(this.state.status !== 200 && this.state.status) {
 
                     window.alert(this.state.massage);
-                    // ReactDOM.render(
-                    //     <Router>
-                    //         <Switch>
-                    //             <Route path={"/register"}>
-                    //                 <SignUp />
-                    //             </Route>
-                    //         </Switch>
-                    //     </Router>,document.getElementById("root"));
-                    this.state.redirectToReg = true;
+                    this.setState(prevState => ({redirectToReg: true}));
                     ReactDOM.render(<SignIn/>,document.getElementById("root"));
                     //this.forceUpdate();
                 }
                 else {
                     localStorage.setItem("jwt",this.state.massage);
                     console.log(localStorage);
-                    //window.alert(this.state.massage);
-                    // ReactDOM.render(
-                    //     <Router>
-                    //         <Switch>
-                    //             <Route path={"/userCredit"}>
-                    //                 <Credit />
-                    //             </Route>
-                    //         </Switch>
-                    //     </Router>,document.getElementById("root"));
-                    //this.state.redirect = true;
                     this.setState(prevState => ({redirect: true}));
                     ReactDOM.render(<SignIn/>,document.getElementById("root"));
                     //this.forceUpdate();

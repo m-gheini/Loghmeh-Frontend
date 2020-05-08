@@ -60,7 +60,14 @@ export class Credit extends React.Component{
                 else{
                     console.log()
                         this.state.redirect = true;
-                    ReactDOM.render(<Credit/>,document.getElementById("root"));
+                    ReactDOM.render(
+                        <Router>
+                            <Switch >
+                                <Credit/>
+                            </Switch>
+                        </Router>
+                        ,document.getElementById("root")
+                    );
                 }
             })
         .catch((error) => {
@@ -78,7 +85,7 @@ export class Credit extends React.Component{
     render() {
         if(this.state.redirect){
             console.log("redirecting...");
-            return <Redirect to={this.state.page}/>
+            return <Redirect to={this.state.page}><Credit/></Redirect>;
         }
         return (
             <Router>
