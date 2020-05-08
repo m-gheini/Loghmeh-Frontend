@@ -76,7 +76,7 @@ export class Orders extends React.Component{
                     <Route exact path={"/login"}><SignIn/></Route>
                     <Route exact path={"/home"}><Home/></Route>
                     <Route exact path={"/userCredit"}><Credit/></Route>
-                    <Route exact path={"/userOrder"}>
+                    <Route exact path={"/userOrders"}>
                         <div className="whole">
                             <Menu location="userInfo"/>
                             <UserInfo/>

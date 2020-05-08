@@ -5,7 +5,7 @@ import {Footer} from "./footer";
 import {Menu} from "./header";
 import {Loader} from "./loading";
 import {SignIn} from "./signIn";
-import {BrowserRouter as Router, Link, Route, Switch} from "react-router-dom";
+import {BrowserRouter as Router, Link, Redirect, Route, Switch} from "react-router-dom";
 import {Home} from "./home";
 
 export class Credit extends React.Component{
@@ -15,7 +15,9 @@ export class Credit extends React.Component{
         this.handleCreditInc = this.handleCreditInc.bind(this);
         this.state = {incCredit : 0,
             status : null,
-            massage :null
+            massage :null,
+            redirect : false,
+            page : "/userCredit"
         }
     }
     goToCredit(){
@@ -55,6 +57,11 @@ export class Credit extends React.Component{
                         ReactDOM.render(<SignIn />,document.getElementById("root"));
                     }
                 }
+                else{
+                    console.log()
+                        this.state.redirect = true;
+                    ReactDOM.render(<Credit/>,document.getElementById("root"));
+                }
             })
         .catch((error) => {
             console.log('error: ' + error);
@@ -69,6 +76,10 @@ export class Credit extends React.Component{
         this.setState(prevState => ({incCredit : event.target.value}))
     }
     render() {
+        if(this.state.redirect){
+            console.log("redirecting...");
+            return <Redirect to={this.state.page}/>
+        }
         return (
             <Router>
                 <Switch>
@@ -90,11 +101,9 @@ export class Credit extends React.Component{
                                            onChange={this.handleCreditInc}/>
                                 </span>
                                             <span className="form-btn" dir="rtl" lang="fa">
-                                                <Link to={"/userCredit"}>
                                     <button type="submit" className="btn submit-btn down" dir="rtl"
                                             onClick={(e) => {this.handleIncreasing(e)}} lang="fa" >افزایش
                                     </button>
-                                                    </Link>
                                 </span>
                                         </form>
                                     </div>

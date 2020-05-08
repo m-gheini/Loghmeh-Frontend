@@ -70,9 +70,11 @@ export class Menu extends React.Component{
                 <div className="container-fluid navbar-content" lang="fa">
                     <ul className="nav navbar-nav navbar-right" lang="fa">
                         <li className="list-item" lang="fa">
+                            <Link to={"/home"}>
                             <button type="button" className="without-style" >
                                 <img className="img-responsive logo" src={logo} alt="Loghmeh Logo" onClick={this.goToHome}/>
                             </button>
+                            </Link>
                         </li>
                     </ul>
                     <ul className="nav navbar-nav" lang="fa">

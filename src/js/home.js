@@ -85,7 +85,6 @@ export class Home extends React.Component{
             <Router>
                 <Switch>
                     <Route exact path={"/login"}><SignIn/></Route>
-                    <Route exact path={"/restaurantInfo"}><SignIn/></Route>
                     <Route exact path={"/home"}>
                         <div className="whole">
                             { this.state.loading ? <Loader/> :
@@ -221,9 +220,7 @@ export class RestaurantInfo extends React.Component {
                     <span className="restaurant-food-name black-font">{this.props.name}</span>
                 </span>
                 <br/>
-                <Link to={"/restaurantInfo"}>
                 <button type="button" className="btn done black-font without-shadow" dir="rtl" lang="fa" onClick={this.goToSpecificRestaurant}>نمایش منو</button>
-                </Link>
             </div>
         );
     }

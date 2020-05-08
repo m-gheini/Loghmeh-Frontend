@@ -22,7 +22,6 @@ ReactDOM.render(
         <Route path="/home"><Home /></Route>
         <Route path="/userOrders"><Orders /></Route>
         <Route path="/userCredit"><Credit /></Route>
-        <Route path="/restaurantInfo"><Restaurant /></Route>
         <Redirect to="/login"><SignIn /></Redirect>
         <SignIn/>
 
