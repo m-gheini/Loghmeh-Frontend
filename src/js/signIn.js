@@ -74,6 +74,47 @@ export class SignIn extends React.Component{
         const googleSignIn = (response) => {
             console.log(response);
             // setEmail(response.profileObj.email);
+                const queryString = "email="+response.profileObj.email;
+                console.log(queryString);
+                fetch('http://localhost:8080/googleLogin?'+queryString,{
+                    method: 'POST' ,
+                    headers: {
+                        'content-length' : queryString.length,
+                        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+                    }
+                })
+                    .then(response => response.json())
+                    .then(data => {this.setState(prevState => ({status: data.errorCode,massage: data.errorMassage}))})
+                    .then(data=>{
+                        console.log(queryString);
+                        console.log("HEREEE")
+                        console.log(this.state.message);
+                        if(this.state.status !== 200 && this.state.status) {
+
+                            window.alert(this.state.massage);
+                            ReactDOM.render(
+                                <Router>
+                                    <Switch>
+                                        <Route path={"/register"}>
+                                            <SignUp />
+                                        </Route>
+                                    </Switch>
+                                </Router>,document.getElementById("root"));
+                        }
+                        else {
+                            localStorage.setItem("jwt",this.state.massage);
+                            console.log(localStorage);
+                            //window.alert(this.state.massage);
+                            ReactDOM.render(
+                                <Router>
+                                    <Switch>
+                                        <Route path={"/userCredit"}>
+                                            <Credit />
+                                        </Route>
+                                    </Switch>
+                                </Router>,document.getElementById("root"));
+                        }
+                    });
         };
         return (
             <Router>
