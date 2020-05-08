@@ -71,7 +71,7 @@ export class SignUp extends React.Component{
             console.log("redirect finally ",this.state.redirect);
             return <Redirect to={"/login"}/>
         }
-        else {
+        if(localStorage.getItem("jwt") === null) {
             return (
                 <Router>
                     <Switch>
@@ -124,6 +124,9 @@ export class SignUp extends React.Component{
                 </Router>
 
             );
+        }
+        else{
+            return <Redirect to={"/home"}/>
         }
     }
 
