@@ -104,8 +104,8 @@ export class SignIn extends React.Component{
                                             className="google-signin"
                                             clientId="1033049469249-3efdhkrfvbepo8h0ma107og9eqgkd163.apps.googleusercontent.com"
                                             buttonText="ورود به وسیله حساب کاربری گوگل  "
-                                            // onSuccess = {googleSignIn}
-                                            // onFailure = {googleSignIn}
+                                            onSuccess = {googleSignIn}
+                                            onFailure = {googleSignIn}
 
                                         />
                                         <div className="no-account" dir="rtl" lang="fa">
