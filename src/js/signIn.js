@@ -9,6 +9,7 @@ import {Footer} from "./footer";
 import {Menu} from "./header";
 import GoogleLogin from "react-google-login"
 import { BrowserRouter as Router, Route, Switch, Link, Redirect } from "react-router-dom";
+import {Restaurant} from "./restaurant";
 
 export class SignIn extends React.Component{
     constructor(props) {
@@ -81,14 +82,28 @@ export class SignIn extends React.Component{
 
                     window.alert(this.state.massage);
                     this.setState(prevState => ({redirectToReg: true}));
-                    ReactDOM.render(<SignIn/>,document.getElementById("root"));
+                    ReactDOM.render(
+                        <Router>
+                            <Switch >
+                        {/*<Redirect to="/restaurantInfo"/>*/}
+                                <SignIn/>
+                            </Switch>
+                        </Router>
+                        ,document.getElementById("root"));
                     //this.forceUpdate();
                 }
                 else {
                     localStorage.setItem("jwt",this.state.massage);
                     console.log(localStorage);
                     this.setState(prevState => ({redirect: true}));
-                    ReactDOM.render(<SignIn/>,document.getElementById("root"));
+                    ReactDOM.render(
+                        <Router>
+                            <Switch >
+                                {/*<Redirect to="/restaurantInfo"/>*/}
+                                <SignIn/>
+                            </Switch>
+                        </Router>
+                        ,document.getElementById("root"));
                     //this.forceUpdate();
                 }
             });

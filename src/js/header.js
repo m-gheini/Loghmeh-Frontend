@@ -12,6 +12,8 @@ export class Menu extends React.Component{
         this.goToHome = this.goToHome.bind(this);
     }
     logOut(){
+        localStorage.clear();
+        console.log(localStorage);
         ReactDOM.render(<SignIn />,document.getElementById("root"));
     }
     goToHome(){
