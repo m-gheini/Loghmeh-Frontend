@@ -69,36 +69,43 @@ export class SignIn extends React.Component{
 
 
     render() {
-        const [email, setEmail] = useState("")
+        // const [email, setEmail] = useState("");
 
         const googleSignIn = (response) => {
             console.log(response);
-            setEmail(response.profileObj.email);
-        }
+            // setEmail(response.profileObj.email);
+        };
         return (
             <Router>
                 <Switch>
-                    <Route path="/userCredit"><Credit /></Route>
-                    <Route path="/register"><SignUp /></Route>
+                    <Route path="/userCredit"><Credit/></Route>
+                    <Route path="/register"><SignUp/></Route>
                     <Route exact path="/login">
                         <div className='whole'>
                             <Menu location="entry"/>
-                            <div className="container-fluid main-content "  lang="fa">
+                            <div className="container-fluid main-content " lang="fa">
                                 <div className="col-sm-6 sighnup-div white-back" lang="fa" id="info-box">
                                     <div className="form-div" dir="rtl" lang="fa" id="form">فرم ورود</div>
-                                    <form className="col-sm-10 signup-form" action="" dir="rtl" lang="fa" onSubmit={(e) => {this.handleEnterUser(e)}}>
-                                        <EntryInput htmlFor="email" label="پست الکترونیک:" inputType="email" placeHolder="پست الکترونیک"/>
-                                        <EntryInput htmlFor="pwd" label="رمز عبور:" inputType="password" placeHolder="رمز عبور"/>
+                                    <form className="col-sm-10 signup-form" action="" dir="rtl" lang="fa"
+                                          onSubmit={(e) => {
+                                              this.handleEnterUser(e)
+                                          }}>
+                                        <EntryInput htmlFor="email" label="پست الکترونیک:" inputType="email"
+                                                    placeHolder="پست الکترونیک"/>
+                                        <EntryInput htmlFor="pwd" label="رمز عبور:" inputType="password"
+                                                    placeHolder="رمز عبور"/>
                                         {/*<Link to={'/userCredit'}>*/}
-                                        <button type="submit" className="col-sm-12 btn btn-default sub-btn dark-green" dir="rtl" lang="fa" >ورود</button>
+                                        <button type="submit" className="col-sm-12 btn btn-default sub-btn dark-green"
+                                                dir="rtl" lang="fa">ورود
+                                        </button>
                                         {/*</Link>*/}
                                         {/*<div className="google-signin g-signin2"/>*/}
                                         <GoogleLogin
                                             className="google-signin"
                                             clientId="1033049469249-3efdhkrfvbepo8h0ma107og9eqgkd163.apps.googleusercontent.com"
                                             buttonText="ورود به وسیله حساب کاربری گوگل  "
-                                            onSuccess = {googleSignIn}
-                                            onFailure = {googleSignIn}
+                                            // onSuccess = {googleSignIn}
+                                            // onFailure = {googleSignIn}
 
                                         />
                                         <div className="no-account" dir="rtl" lang="fa">
@@ -107,16 +114,16 @@ export class SignIn extends React.Component{
                                             کاربر جدید هستید؟
                                             <Link to={'/register'} className="new-user">ثبت نام کنید.</Link>
                                         </div>
-                                    </form >
+                                    </form>
                                 </div>
                             </div>
                             <Footer/>
                             {/*<Loader/>*/}
                         </div>
 
-                     </Route>
-                 </Switch>
-             </Router>
+                    </Route>
+                </Switch>
+            </Router>
         );
     }
 }
