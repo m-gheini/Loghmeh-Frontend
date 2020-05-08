@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import ReactDOM from 'react-dom';
 import logo from '../Assets/LOGO.png';
 import {Loader} from "./loading";
@@ -8,6 +8,7 @@ import {Home} from "./home";
 import {Footer} from "./footer";
 import {Menu} from "./header";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import GoogleLogin from "react-google-login"
 
 export class SignIn extends React.Component{
     constructor(props) {
@@ -22,6 +23,7 @@ export class SignIn extends React.Component{
         ReactDOM.render(<Credit /> ,document.getElementById("root"));
     }
     handleEnterUser(event) {
+        console.log("UNDERSTOOD ON SUBMIT")
         event.preventDefault();
         event.persist();
         var params = {
@@ -52,11 +54,27 @@ export class SignIn extends React.Component{
                     localStorage.setItem("jwt",this.state.massage);
                     console.log(localStorage);
                     //window.alert(this.state.massage);
-                    ReactDOM.render(<Credit />,document.getElementById("root"));
+                    ReactDOM.render(
+                        <Router>
+                            <Switch>
+                                <Route path={"/userCredit"}>
+                                    <Credit />
+                                </Route>
+                            </Switch>
+                        </Router>,document.getElementById("root"));
                 }
             });
     }
+
+
+
     render() {
+        const [email, setEmail] = useState("")
+
+        const googleSignIn = (response) => {
+            console.log(response);
+            setEmail(response.profileObj.email);
+        }
         return (
             <Router>
                 <Switch>
@@ -71,10 +89,18 @@ export class SignIn extends React.Component{
                                     <form className="col-sm-10 signup-form" action="" dir="rtl" lang="fa" onSubmit={(e) => {this.handleEnterUser(e)}}>
                                         <EntryInput htmlFor="email" label="پست الکترونیک:" inputType="email" placeHolder="پست الکترونیک"/>
                                         <EntryInput htmlFor="pwd" label="رمز عبور:" inputType="password" placeHolder="رمز عبور"/>
-                                        <Link to={'/userCredit'}>
+                                        {/*<Link to={'/userCredit'}>*/}
                                         <button type="submit" className="col-sm-12 btn btn-default sub-btn dark-green" dir="rtl" lang="fa" >ورود</button>
-                                        </Link>
-                                        <div className="google-signin g-signin2"/>
+                                        {/*</Link>*/}
+                                        {/*<div className="google-signin g-signin2"/>*/}
+                                        <GoogleLogin
+                                            className="google-signin"
+                                            clientId="1033049469249-3efdhkrfvbepo8h0ma107og9eqgkd163.apps.googleusercontent.com"
+                                            buttonText="ورود به وسیله حساب کاربری گوگل  "
+                                            onSuccess = {googleSignIn}
+                                            onFailure = {googleSignIn}
+
+                                        />
                                         <div className="no-account" dir="rtl" lang="fa">
                                             <br/>
                                             <br/>
