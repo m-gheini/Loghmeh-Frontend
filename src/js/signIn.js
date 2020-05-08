@@ -89,7 +89,8 @@ export class SignIn extends React.Component{
                     //         </Switch>
                     //     </Router>,document.getElementById("root"));
                     this.state.redirectToReg = true;
-                    this.forceUpdate();
+                    ReactDOM.render(<SignIn/>,document.getElementById("root"));
+                    //this.forceUpdate();
                 }
                 else {
                     localStorage.setItem("jwt",this.state.massage);
@@ -103,8 +104,10 @@ export class SignIn extends React.Component{
                     //             </Route>
                     //         </Switch>
                     //     </Router>,document.getElementById("root"));
-                    this.state.redirect = true;
-                    this.forceUpdate();
+                    //this.state.redirect = true;
+                    this.setState(prevState => ({redirect: true}));
+                    ReactDOM.render(<SignIn/>,document.getElementById("root"));
+                    //this.forceUpdate();
                 }
             });
     }
