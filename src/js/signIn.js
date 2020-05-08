@@ -7,6 +7,7 @@ import {Credit} from "./credit";
 import {Home} from "./home";
 import {Footer} from "./footer";
 import {Menu} from "./header";
+import GoogleLogin from "react-google-login"
 import { BrowserRouter as Router, Route, Switch, Link, Redirect } from "react-router-dom";
 
 export class SignIn extends React.Component{
@@ -15,7 +16,8 @@ export class SignIn extends React.Component{
         this.goToSignUp = this.goToSignUp.bind(this);
         this.signIn = this.signIn.bind(this);
         this.state = {
-            redirect :false
+            redirect :false,
+            redirectToReg : false
         }
     }
     goToSignUp(){
@@ -57,12 +59,65 @@ export class SignIn extends React.Component{
                 }
             });
     }
+    googleSignIn(response){
+        console.log(response);
+        // setEmail(response.profileObj.email);
+        const queryString = "email="+response.profileObj.email;
+        console.log(queryString);
+        fetch('http://localhost:8080/googleLogin?'+queryString,{
+            method: 'POST' ,
+            headers: {
+                'content-length' : queryString.length,
+                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+            }
+        })
+            .then(response => response.json())
+            .then(data => {this.setState(prevState => ({status: data.errorCode,massage: data.errorMassage}))})
+            .then(data=>{
+                console.log(queryString);
+                console.log("HEREEE")
+                console.log(this.state.message);
+                if(this.state.status !== 200 && this.state.status) {
+
+                    window.alert(this.state.massage);
+                    // ReactDOM.render(
+                    //     <Router>
+                    //         <Switch>
+                    //             <Route path={"/register"}>
+                    //                 <SignUp />
+                    //             </Route>
+                    //         </Switch>
+                    //     </Router>,document.getElementById("root"));
+                    this.state.redirectToReg = true;
+                    this.forceUpdate();
+                }
+                else {
+                    localStorage.setItem("jwt",this.state.massage);
+                    console.log(localStorage);
+                    //window.alert(this.state.massage);
+                    // ReactDOM.render(
+                    //     <Router>
+                    //         <Switch>
+                    //             <Route path={"/userCredit"}>
+                    //                 <Credit />
+                    //             </Route>
+                    //         </Switch>
+                    //     </Router>,document.getElementById("root"));
+                    this.state.redirect = true;
+                    this.forceUpdate();
+                }
+            });
+    }
     render() {
         console.log("from login...")
         console.log("redirect",this.state.redirect);
         if(this.state.redirect){
             console.log("redirect finally ",this.state.redirect);
             return <Redirect to={"/userCredit"}/>
+        }
+        if(this.state.redirectToReg){
+            console.log("redirect finally ",this.state.redirect);
+            return <Redirect to={"/register"}/>
         }
         else {
             return (
@@ -89,7 +144,14 @@ export class SignIn extends React.Component{
                                                     className="col-sm-12 btn btn-default sub-btn dark-green" dir="rtl"
                                                     lang="fa">ورود
                                             </button>
-                                            <div className="google-signin g-signin2"/>
+                                            <GoogleLogin
+                                                className="google-signin"
+                                                clientId="1033049469249-3efdhkrfvbepo8h0ma107og9eqgkd163.apps.googleusercontent.com"
+                                                buttonText="ورود به وسیله حساب کاربری گوگل  "
+                                                onSuccess = {(e)=>{this.googleSignIn(e)}}
+                                                onFailure = {(e)=>{this.googleSignIn(e)}}
+
+                                            />
                                             <div className="no-account" dir="rtl" lang="fa">
                                                 <br/>
                                                 <br/>
