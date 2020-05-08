@@ -136,9 +136,14 @@ export class UserInfo extends React.Component{
             familyName : '',
             email : '',
             credit : 0,
-            phoneNumber : 0}
+            phoneNumber : 0,
+        redirect : false
+        }
     }
     render() {
+        if(this.state.redirect){
+            return <Redirect to={"/login"}/>
+        }
         return (
             <div className="container-fluid user-info pink-back" dir="rtl" lang="fa">
                 { this.state.loading ? <Loader/> :
@@ -192,6 +197,8 @@ export class UserInfo extends React.Component{
             console.log('error: ' + error);
             this.setState({ requestFailed: true });
             window.alert("you do not have access to this page please login first");
+            this.state.redirect = true;
+            this.forceUpdate();
             //TODO redirect
         });
 
