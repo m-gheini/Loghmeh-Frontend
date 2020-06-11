@@ -37,7 +37,7 @@ export class SignIn extends React.Component{
         var queryString = Object.keys(params).map(function(key){
             return key + '=' + params[key]
         }).join('&');
-        fetch('http://localhost:8080/login?'+queryString,{
+        fetch('http://185.166.105.6:30007/IECA/login?'+queryString,{
             method: 'POST' ,
             headers: {
                 'content-length' : queryString.length,
@@ -65,7 +65,7 @@ export class SignIn extends React.Component{
         // setEmail(response.profileObj.email);
         const queryString = "email="+response.profileObj.email;
         console.log(queryString);
-        fetch('http://localhost:8080/googleLogin?'+queryString,{
+        fetch('http://185.166.105.6:30007/IECA/googleLogin?'+queryString,{
             method: 'POST' ,
             headers: {
                 'content-length' : queryString.length,

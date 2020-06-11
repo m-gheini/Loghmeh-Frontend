@@ -21,7 +21,7 @@ export class Orders extends React.Component{
         }
     }
     fetchOrders(){
-        fetch('http://localhost:8080/user/orders',{
+        fetch('http://185.166.105.6:30007/IECA/user/orders',{
             method: 'GET' ,
             headers: {
                 'Authorization': localStorage.getItem("jwt")

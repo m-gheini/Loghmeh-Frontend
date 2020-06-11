@@ -37,7 +37,7 @@ export class SignUp extends React.Component{
             return key + '=' + params[key]
         }).join('&');
         console.log(queryString);
-        fetch('http://localhost:8080/users?'+queryString,{
+        fetch('http://185.166.105.6:30007/IECA/users?'+queryString,{
             method: 'POST' ,
             headers: {
                 'content-length' : queryString.length,

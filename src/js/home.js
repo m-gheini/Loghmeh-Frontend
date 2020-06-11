@@ -32,7 +32,7 @@ export class Home extends React.Component{
         }
     }
     fetchRestaurants(){
-        fetch('http://localhost:8080/restaurants')
+        fetch('http://185.166.105.6:30007/IECA/restaurants')
             .then(resp => resp.json())
             .then(data =>
                 this.setState(
@@ -48,7 +48,7 @@ export class Home extends React.Component{
             });
     }
     setTime(){
-        fetch('http://localhost:8080/foodPartyTime')
+        fetch('http://185.166.105.6:30007/IECA/foodPartyTime')
             .then(resp => resp.json())
             .then(data =>
                 this.setState(
@@ -63,7 +63,7 @@ export class Home extends React.Component{
             });
     }
     fetchSaleRestaurants(){
-        fetch('http://localhost:8080/saleFoods')
+        fetch('http://185.166.105.6:30007/IECA/saleFoods')
             .then(resp => resp.json())
             .then(data =>
                 this.setState(

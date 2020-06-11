@@ -36,7 +36,7 @@ export class Credit extends React.Component{
             return key + '=' + params[key]
         }).join('&');
         console.log(localStorage)
-        fetch('http://localhost:8080/user?'+queryString,{
+        fetch('http://185.166.105.6:30007/IECA/user?'+queryString,{
             method: 'PUT' ,
             headers: {
                 'Authorization': localStorage.getItem("jwt"),
@@ -177,7 +177,7 @@ export class UserInfo extends React.Component{
     componentDidMount() {
         console.log("creditGet");
         this.setState(prevState => ({loading : true}));
-        fetch('http://localhost:8080/user',{
+        fetch('http://185.166.105.6:30007/IECA/user',{
             method: 'GET' ,
             headers: {
                 'Authorization': localStorage.getItem("jwt")

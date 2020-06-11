@@ -33,7 +33,7 @@ export class Restaurant extends React.Component{
     }
 
     fetchFoods(){
-        fetch('http://localhost:8080/restaurants/'+this.props.restaurant.id)
+        fetch('http://185.166.105.6:30007/IECA/restaurants/'+this.props.restaurant.id)
             .then(resp => resp.json())
             .then(data =>
                 this.setState(
@@ -67,7 +67,7 @@ export class Restaurant extends React.Component{
     }
 
     fetchCart() {
-        fetch('http://localhost:8080/user/cart',{
+        fetch('http://185.166.105.6:30007/IECA/user/cart',{
             method: 'GET' ,
             headers: {
                 'Authorization': localStorage.getItem("jwt")
@@ -180,7 +180,7 @@ export class Food extends React.Component {
             return key + '=' + params[key]
         }).join('&');
         console.log(queryString);
-        fetch('http://localhost:8080/users/1/cart?'+queryString,{
+        fetch('http://185.166.105.6:30007/IECA/users/1/cart?'+queryString,{
             method: 'PUT' ,
             headers: {
                 'content-length' : queryString.length,
@@ -230,7 +230,7 @@ export class Cart extends React.Component{
 
     }
     finalize(){
-        fetch('http://localhost:8080/users/cart',{
+        fetch('http://185.166.105.6:30007/IECA/users/cart',{
             method: 'POST' ,
             headers: {
                 'content-length' : 0,
@@ -280,7 +280,7 @@ export class Cart extends React.Component{
     }
 
     componentDidMount() {
-        fetch('http://localhost:8080/user/cart',{
+        fetch('http://185.166.105.6:30007/IECA/user/cart',{
             method: 'GET' ,
             headers: {
                 'Authorization': localStorage.getItem("jwt")
